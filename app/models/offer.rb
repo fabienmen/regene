@@ -5,4 +5,5 @@ class Offer < ApplicationRecord
 
   # has_one :credit_per_ha, through: :earning
   # has_one :carbon_credit_price, through: :earning
+  validates :replanted_area, presence: true
 end

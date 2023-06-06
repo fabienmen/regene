@@ -10,7 +10,7 @@ Land.destroy_all
 User.destroy_all
 Offer.destroy_all
 
-user1 = User.new(email: "t@gmail.com", password: "123123", first_name: "Tiago", last_name: "Andrade", address: "Rua faria da costa", phone_number: "918690101")
+user1 = User.new(email: "t@gmail.com", password: "123123", first_name: "Tiago", last_name: "Andrade", address: "Rua faria da costa", phone_number: "11942483414")
 user1.save!
 
 puts "Creating lands..."
