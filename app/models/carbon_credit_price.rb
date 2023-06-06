@@ -1,0 +1,2 @@
+class CarbonCreditPrice < ApplicationRecord
+end
