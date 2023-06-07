@@ -3,7 +3,6 @@ class LandsController < ApplicationController
   end
 
   def set_location
-    session[:location] = params[:land][:address]
-    raise
+    # session[:location] = params[:land][:address]
   end
 end
