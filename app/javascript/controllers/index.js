@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ReplantedSizeController from "./replanted_size_controller"
+application.register("replanted-size", ReplantedSizeController)

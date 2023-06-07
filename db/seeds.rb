@@ -10,7 +10,7 @@ Land.destroy_all
 User.destroy_all
 Offer.destroy_all
 
-user1 = User.new(email: "t@gmail.com", password: "123123", first_name: "Tiago", last_name: "Andrade", address: "Rua faria da costa", phone_number: "11942483414")
+user1 = User.new(email: "t@gmail.com", password: "123123", first_name: "Tiago", last_name: "Andrade", address: "Rua faria da costa", phone_number: "11942483414", tax_number: 65859318073)
 user1.save!
 
 puts "Creating lands..."
@@ -158,6 +158,7 @@ offer1 = Offer.new(
   user: user1,
   land: land1,
   active: false,
-  earning: earning1
+  earning: earning1,
+  replanted_area: 100
 )
 offer1.save!

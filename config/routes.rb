@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  post "/set_total_area", to: "lands#set_total_area"
+  get "/set_replanted_area", to: "lands#set_replanted_area"
+
 end
