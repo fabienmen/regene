@@ -1,2 +1,14 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%= simple_form_for @land, url: set_location_path, method: :post do |form| %>
+  <%= form.input :address %>
+  <%= form.button :submit, "Próximo" %>
+<% end %>
+
+<%= session[:location] %>
+
+<div style="width: 50%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
