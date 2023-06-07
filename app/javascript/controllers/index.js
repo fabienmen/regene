@@ -10,5 +10,10 @@ application.register("address-autocomplete", AddressAutocompleteController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+
+import ReplantedSizeController from "./replanted_size_controller"
+application.register("replanted-size", ReplantedSizeController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
+
