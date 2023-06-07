@@ -1,0 +1,70 @@
+<%# <div data-controller="replanted-size">
+  <label for="sizeRange" class="form-label">Example range</label>
+  <input type="range"
+        name="sizeRange"
+        class="range-size"
+        data-replanted-size-target="range"
+        data-action="click->replanted-size#displaySize"
+        min="1"
+        max="10"
+        step="1">
+  <p data-replanted-size-target="size"></p>
+</div> %>
+<%# <%= simple_form_for @land do |f| %>
+<%# <%= f.input :data, as: :range, input_html:{ min:"0", max:"45", oninput:"updateTextInput(this.value)"}%>
+<%# <% end %>
+<%# <input type="text" id="textInput" value=""> %>
+
+
+<%# <%= f.input :data, as: :range, input_html:{ min:"0", max:"45", oninput:"updateTextInput(this.value)"}%>
+
+<%# <%= range_field :thing1, :in => 0..100, :step => '.1', onchange: "" %>
+
+
+<%# <h1>Size of replaonted area</h1>
+
+<%= simple_form_for set_replanted_area_path, method: :get, html: { data: { controller: 'replanted_size', action: 'ajax:success->replanted-size#displaySize' } } do |f| %>
+  <%# <%= f.input :replanted_area, as: :range, min: 0, max: 500, data: { target: 'replanted-size.replantedArea' } %>
+  <%# <%= f.button :submit, 'Calcular' %>
+<%# <% end %>
+
+<%# <p>Money<span id="money"></span></p>
+<div class="slidecontainer">
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+  <p>Value: <span id="demo"></span></p>
+</div>
+  <% @total = @carbon.year_1 * @carbon_price.year_1 %>
+  <%# <p id="total"><%= @total %>
+<%# <script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+var price = document.getElementById("money");
+var total = document.getElementById("total");
+
+output.innerHTML = slider.value;
+
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  // console.log(this.value)
+  var total1 = this.value * total.innerHTML
+  // console.log(total1)
+  price.innerHTML = total1;
+}
+</script> %>
+<h4>Simule a sua renda</h4>
+<div data-controller="replanted-size">
+<div class="d-none" data-replanted-size-target="total"><%= @total %></div>
+  <p>R$<span id="money" data-replanted-size-target="money"></span>/Mês</p>
+  <div class="slidecontainer">
+    <input type="range" min="1" max="100" value="50" class="slider" id="myRange" data-action="input->replanted-size#displaySize" data-replanted-size-target="range">
+    <p><span id="demo" data-replanted-size-target="demo"></span>Ha</p>
+  </div>
+</div>
+<%= link_to 'Estou Dentro!', new_user_registration_path, class: "btn btn-success" %>
+<%# <button type="button" class="btn btn-success">Estou Dentro!</button> %>
+
+<%# <%= simple_form_for @land, set_replanted_area_path, method: :get, html: { data: { controller: 'replanted_size', action: 'ajax:success->replanted-size#displaySize' } } do |f| %>
+  <%# <%= f.input :replanted_area, as: :range, min: 0, max: 500, data: { target: 'replanted-size.replantedArea' } %>
+  <%# <%= f.button :submit, 'Calcular' %>
+<%# <% end %>  
