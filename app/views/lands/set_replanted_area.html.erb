@@ -52,17 +52,28 @@ slider.oninput = function() {
   price.innerHTML = total1;
 }
 </script> %>
+
+
+  <%# <div class="d-none" data-replanted-size-target="total"><%= @total</div> %>
+  <%# <p>R$<span id="money" data-replanted-size-target="money"></span>/Mês</p> %>
+  <%# <div class="slidecontainer"> %>
+    <%# <input type="range" min="1" max="<%= @ola %><%#%" value="50" class="slider" id="myRange" data-action="input->replanted-size#displaySize" data-replanted-size-target="range"> %>
+    <%# <p><span id="demo" data-replanted-size-target="demo"></span>Ha</p> %>
+  <%# </div> %>
+  <%# <%= link_to 'Estou Dentro!', new_user_registration_path, class: "btn btn-success", data: { controller: 'replanted_size', action: 'click->replanted-size#storeValue' }%>
+
 <h4>Simule a sua renda</h4>
 <div data-controller="replanted-size">
-  <div class="d-none" data-replanted-size-target="total"><%= @total %></div>
-  <p>R$<span id="money" data-replanted-size-target="money"></span>/Mês</p>
-  <div class="slidecontainer">
-    <input type="range" min="1" max="100" value="50" class="slider" id="myRange" data-action="input->replanted-size#displaySize" data-replanted-size-target="range">
-    <p><span id="demo" data-replanted-size-target="demo"></span>Ha</p>
-  </div>
-  <%= link_to 'Estou Dentro!', new_user_registration_path, class: "btn btn-success", data: { controller: 'replanted_size', action: 'click->replanted-size#storeValue' }%>
+<div class="d-none" data-replanted-size-target="total"><%= @total %></div>
+<p>R$<span id="money" data-replanted-size-target="money"></span>/Mês</p>
+<%= simple_form_for @offer, url: new_user_registration_path, method: :get do |f| %>
+        <%= f.input :replanted_area, as: :range, input_html:{ min:"0", max: @ola, "data-target": "replanted-size.range", "data-action": 'input->replanted-size#displaySize' }%>
+        <br>
+        <p><span id="demo" data-replanted-size-target="demo"></span>Ha</p>
+        <p><span><%= @ola %></span>Ha</p>
+        <%= f.submit 'Estou Dentro!', class: "btn btn-success" %>
+<% end %>
 </div>
-
 <%# new_user_registration_path %>
 <%# <%= link_to "close", "#", data: { countdown_target: "link" } %>
 <%# <button type="button" class="btn btn-success">Estou Dentro!</button> %>

@@ -9,7 +9,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :phone_number, format: { with: /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/ }
-  validates :tax_number, presence: true, uniqueness: true
+  validates :tax_number, uniqueness: true
   validates_cpf_format_of :tax_number
 
 end
+# validates :tax_number, presence: true, uniqueness: true
+# validates :phone_number, format: { with: /\A(?:\+?\d{1,3}\s*-?)?\(?(?:\d{3})?\)?[- ]?\d{3}[- ]?\d{4}\z/ }
