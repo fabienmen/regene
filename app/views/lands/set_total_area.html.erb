@@ -1,0 +1,13 @@
+<h1>Qual é o tamanho</h1>
+<h1>da sua terra?</h1>
+
+<%# <input type="text" value="500 Hectares">
+<p>Em <strong>Guiba</strong>, onde a floresta nativa é <strong>Amazônica</strong></p>
+<%= link_to 'Validar', set_replanted_area_path, class: "btn btn-success", data: { controller: 'replanted_size', action: 'click->replanted-size#storeValue' }%>
+
+
+<%= simple_form_for @land, url: set_replanted_area_path, method: :get do |f| %>
+        <%= f.input :total_area %>
+        <br>
+        <%= f.submit 'Validar', class: "btn btn-success" %>
+<% end %>

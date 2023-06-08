@@ -16,6 +16,7 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
 
+
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
       types: "country,region,place,address"
@@ -49,5 +50,4 @@ export default class extends Controller {
   #clearInputValue() {
     this.addressTarget.value = ""
   }
-
 }

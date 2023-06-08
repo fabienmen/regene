@@ -11,5 +11,17 @@ export default class extends Controller {
   displaySize(event) {
     this.demoTarget.innerHTML = this.rangeTarget.value
     this.moneyTarget.innerHTML = this.demoTarget.innerHTML * this.totalTarget.innerHTML
+    fetch('/store_demo_value', {
+      method: 'POST',
+      body: JSON.stringify({ demoValue: this.demoTarget.innerHTML }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  }
+
+  storeValue() {
+    console.log("ola")
+    sessionStorage.setItem("demoValue", this.demoTarget.innerHTML)
   }
 }
