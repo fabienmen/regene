@@ -23,7 +23,7 @@
 
 <%# <h1>Size of replaonted area</h1>
 
-<%= simple_form_for set_replanted_area_path, method: :get, html: { data: { controller: 'replanted_size', action: 'ajax:success->replanted-size#displaySize' } } do |f| %>
+<%= simple_form_for set_replanted_area_path, method: :get, html: { data: { controller: 'replanted_size', action: 'ajax:success->replanted-size#displaySize' }}  do |f| %>
   <%# <%= f.input :replanted_area, as: :range, min: 0, max: 500, data: { target: 'replanted-size.replantedArea' } %>
   <%# <%= f.button :submit, 'Calcular' %>
 <%# <% end %>
@@ -54,17 +54,20 @@ slider.oninput = function() {
 </script> %>
 <h4>Simule a sua renda</h4>
 <div data-controller="replanted-size">
-<div class="d-none" data-replanted-size-target="total"><%= @total %></div>
+  <div class="d-none" data-replanted-size-target="total"><%= @total %></div>
   <p>R$<span id="money" data-replanted-size-target="money"></span>/Mês</p>
   <div class="slidecontainer">
     <input type="range" min="1" max="100" value="50" class="slider" id="myRange" data-action="input->replanted-size#displaySize" data-replanted-size-target="range">
     <p><span id="demo" data-replanted-size-target="demo"></span>Ha</p>
   </div>
+  <%= link_to 'Estou Dentro!', new_user_registration_path, class: "btn btn-success", data: { controller: 'replanted_size', action: 'click->replanted-size#storeValue' }%>
 </div>
-<%= link_to 'Estou Dentro!', new_user_registration_path, class: "btn btn-success" %>
+
+<%# new_user_registration_path %>
+<%# <%= link_to "close", "#", data: { countdown_target: "link" } %>
 <%# <button type="button" class="btn btn-success">Estou Dentro!</button> %>
 
 <%# <%= simple_form_for @land, set_replanted_area_path, method: :get, html: { data: { controller: 'replanted_size', action: 'ajax:success->replanted-size#displaySize' } } do |f| %>
   <%# <%= f.input :replanted_area, as: :range, min: 0, max: 500, data: { target: 'replanted-size.replantedArea' } %>
   <%# <%= f.button :submit, 'Calcular' %>
-<%# <% end %>  
+<%# <% end %>
