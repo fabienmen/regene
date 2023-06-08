@@ -1,2 +1,7 @@
 <h1>Refloresta a sua terra e ganha mais dinheiro</h1>
 <%= link_to 'Comece a Ganhar', set_location_path, class: "btn btn-success" %>
+<div style="width: 80%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>

@@ -81,5 +81,3 @@ gem "devise"
 gem "geocoder"
 
 gem "cpf_cnpj"
-
-gem "geocoder"
