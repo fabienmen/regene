@@ -1,10 +1,22 @@
 
-  <div class="position-relative">
-    <div class="banner-header mt-4 w-75 position-absolute top-50 start-50 translate-middle">
-      <h1><strong>Refloreta a sua terra e <u>ganha mais dinheiro</u></strong></h1>
-    </div>
-    <%= image_tag "amazon", class: "w-100"%>
-    <div class="position-absolute w-75 top-100 start-50 translate-middle">
-      <div class="btn btn-success w-100 py-3 border-radius-4">Comece A Ganhar</div>
-    </div>
+<div class="position-relative img-banner">
+  <div class="banner-header mt-4 w-75 position-absolute top-50 start-50 translate-middle">
+    <h1><strong>Refloresta a sua terra e <u>ganhe mais dinheiro</u></strong></h1>
   </div>
+
+  <div class="position-absolute w-75 top-100 start-50 translate-middle">
+    <div class="btn btn-success w-100 py-3 border-radius-4">Comece A Ganhar</div>
+  </div>
+</div>
+
+<button class="w-100 pt-5 pb-2 text-gray" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <i class="fa-regular fa-circle-down"></i> Saiba mais
+</button>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+  </div>
+</div>
+
+<%#= image_tag "amazon", class: "img-banner"%>
