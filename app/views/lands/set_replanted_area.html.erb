@@ -67,10 +67,10 @@ slider.oninput = function() {
 <div class="d-none" data-replanted-size-target="total"><%= @total %></div>
 <p>R$<span id="money" data-replanted-size-target="money"></span>/Mês</p>
 <%= simple_form_for @offer, url: new_user_registration_path, method: :get do |f| %>
-        <%= f.input :replanted_area, as: :range, input_html:{ min:"0", max: @ola, "data-target": "replanted-size.range", "data-action": 'input->replanted-size#displaySize' }%>
+        <%= f.input :replanted_area, as: :range, input_html:{ min:"0", max: @size, "data-target": "replanted-size.range", "data-action": 'input->replanted-size#displaySize' }%>
         <br>
         <p><span id="demo" data-replanted-size-target="demo"></span>Ha</p>
-        <p><span><%= @ola %></span>Ha</p>
+        <p><span><%= @size %></span>Ha</p>
         <%= f.submit 'Estou Dentro!', class: "btn btn-success" %>
 <% end %>
 </div>
