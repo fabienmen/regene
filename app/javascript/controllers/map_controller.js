@@ -31,11 +31,6 @@ export default class extends Controller {
   }
 
   #setInputValue(event) {
-    console.log(event.result)
-    // event.result["place_name"].replace(/^(.*?),(.*)$/, "$1");
-    // const str = event.result["place_name"].replace(/^(.*?),(.*)$/, "$1");
-    // this.addressTarget.value = event.result["place_name"].replace(/^(.*?),(.*)$/, "$1");
-
       new mapboxgl.Marker()
       .setLngLat([event.result.center[0], event.result.center[1]])
       .addTo(this.map)
