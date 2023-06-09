@@ -15,7 +15,7 @@
     <div data-controller="replanted-size">
 
       <div class="d-none" data-replanted-size-target="total"><%= @total %></div>
-        <p class="money-header"> <strong>R$<span id="money" data-replanted-size-target="money"></span></strong><span class="mes">/Mês</span></p>
+        <p class="money-header text-center"> <strong>R$<span id="money" data-replanted-size-target="money"></span></strong><span class="mes">/Mês</span></p>
           <%= simple_form_for @offer, url: new_user_registration_path, method: :get do |f| %>
             <%= f.input :replanted_area, as: :range, class: "ac-color" , input_html:{ min:"0", max: @size, "data-target": "replanted-size.range", "data-action": 'input->replanted-size#displaySize' }%>
             <br>
