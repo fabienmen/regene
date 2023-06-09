@@ -10,6 +10,5 @@ class PagesController < ApplicationController
     # session[:demo_latitude]
     # session[:demo_longitude]
     # session[:demo_replanted]
-    raise
   end
 end
