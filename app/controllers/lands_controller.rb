@@ -36,13 +36,23 @@ class LandsController < ApplicationController
 
   def store_demo_value
     raise
-    session[:demo_value] = params[:demoValue]
-    redirect_to set_total_area_path
-    raise
-    # head :ok
+    session[:demo_value] = params[:location]
   end
+  # def store_demo_value
+  #   raise
+  #   session[:demo_value] = params[:demoValue]
+  #   redirect_to set_total_area_path
+  #   raise
+  #   # head :ok
+  # end
 
-  protected
+  # def store_demo_value
+  #   session[:demo_value] = params[:location]
+  #   redirect_to set_total_area_path
+  #   raise
+  # end
+
+  # protected
 
   # def json_request?
   #   request.format.json?
