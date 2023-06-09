@@ -34,6 +34,7 @@ land2 = Land.new(
 )
 land2.save!
 
+# ola
 land1 = Land.new(
   registration_number: "1970",
   total_area: 1,
@@ -151,6 +152,7 @@ credit_per_ha1 = CreditPerHa.new(
   year_30: 6,
   earning_id: 1
 )
+
 
 credit_per_ha1.save!
 puts "Creating offers..."
