@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   post "/set_replanted_area", to: "lands#set_replanted_area"
   get "/set_replanted_area", to: "lands#set_replanted_area"
   get "/set_location", to: "lands#set_location"
-  get "/set_total_area", to: "lands#set_total_area"
+  post "/set_total_area", to: "lands#set_total_area"
   post "/store_demo_value", to: "lands#store_demo_value"
 end

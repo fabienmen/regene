@@ -8,6 +8,8 @@ export default class extends Controller {
     markers: Array
   }
 
+  static targets = ["address"]
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -31,13 +33,8 @@ export default class extends Controller {
   }
 
   #setInputValue(event) {
-    let location =  event.result.place_name
-    fetch("/store_demo_value", {
-    method: "POST",
-    body: JSON.stringify({
-    location: location
-    })
-});
+    this.location =  event.result.place_name
+    this.addressTarget.value = this.location
       new mapboxgl.Marker()
       .setLngLat([event.result.center[0], event.result.center[1]])
       .addTo(this.map)
@@ -55,6 +52,22 @@ export default class extends Controller {
   }
 
   storeValue() {
-    console.log("adeus")
+    console.log(this.addressTarget.value)
+    location = this.addressTarget.value
+    fetch("/store_demo_value", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        demoValue: location
+      })
+    })
+    // .then(response => {
+    //   // Lógica a ser executada após a resposta da requisição
+    // })
+    // .catch(error => {
+    //   // Lógica de tratamento de erros
+    // });
   }
 }
