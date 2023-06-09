@@ -10,7 +10,9 @@ export default class extends Controller {
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      projection: 'globe',
+      style: "mapbox://styles/mapbox/satellite-streets-v12"
+
     })
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
