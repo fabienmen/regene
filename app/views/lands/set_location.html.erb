@@ -1,10 +1,8 @@
- <div class="mt-5" data-controller="mapconteiner">
-  <div style="width: 80%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    <p data-map-target="address"></p>
-  </div>
-
-  <%= link_to 'Validar', set_total_area_path, class: "btn btn-success", data: { action: 'click->mapconteiner#storeValue' } %>
+<div data-controller="mapconteiner" class="mt-5">
+ <div style="width: 80%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+<%= link_to 'Validar', set_total_area_path, class: "btn btn-success", data: { controller: 'mapcontainer', action: 'click->map#storeValue' }%>
 </div>

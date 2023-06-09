@@ -12,12 +12,12 @@ export default class extends Controller {
     const mapController = this.application.controllers.find(
       controller => controller.context.element.dataset.controller === "map"
       )
-    // mapController.storeValue()
-    if (mapController) {
-      mapController.storeValue()
-    } else {
-      console.error("Could not find map controller.")
-    }
+    mapController.storeValue()
+    // if (mapController) {
+    //   mapController.storeValue()
+    // } else {
+    //   console.error("Could not find map controller.")
+    // }
   }
 
 
