@@ -12,7 +12,7 @@ class LandsController < ApplicationController
   end
 
   def new_offer
-    
+
   end
 
   def index
@@ -29,6 +29,16 @@ class LandsController < ApplicationController
     session[:demo_value] = params[:demoValue]
     session[:demo_latitude] = params[:demoLatitude]
     session[:demo_longitude] = params[:demoLongitude]
+    # session[:demo_replanted]
+  end
+
+  def store_replanted
+    # session[:demo_value] = session[:demo_value]
+    # session[:demo_latitude] = session[:demo_latitude]
+    # session[:demo_longitude] = session[:demo_longitude]
+    puts "set session"
+    session[:demo_replanted] = params[:demoReplanted]
+    puts "session saved #{session[:demo_replanted]}"
   end
 
 end

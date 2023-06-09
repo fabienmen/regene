@@ -21,8 +21,17 @@ export default class extends Controller {
     // })
   }
 
-  // storeValue() {
-  //   console.log("ola")
-  //   sessionStorage.setItem("demoValue", this.demoTarget.innerHTML)
-  // }
+  storeValue() {
+    console.log(this.demoTarget.innerHTML)
+    let replanted = this.demoTarget.innerHTML
+    fetch("/store_replanted", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        demoReplanted: replanted
+      })
+  });
+  }
 }
