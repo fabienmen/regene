@@ -13,5 +13,4 @@ Rails.application.routes.draw do
   # post "/new_offer", to: "lands#new_offer"
   post "/store_demo_value", to: "lands#store_demo_value"
   get '/offer', to: 'pages#offer', as: 'user_root'
-  post '/offer', to: 'pages#offer', as: 'user_root'
 end
