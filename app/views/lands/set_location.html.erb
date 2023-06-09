@@ -11,7 +11,7 @@
 
       <h3 class="text-center my-3" style="color: #29CF7A;"><strong>Onde está seu terreno ?</strong></h3>
       <div class="w-100 d-flex justify-content-center">
-        <div class="shadow-boxing" style="width: 90%; height: 55vh; border-radius: 7px;"
+        <div class="shadow-boxing w90" style="height: 55vh; border-radius: 7px;"
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
