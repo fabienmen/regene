@@ -1,3 +1,4 @@
+
 <div class="position-relative">
   <%= render "shared/navbar_black" %>
   <div class="position-absolute w-100 top-100">
@@ -19,9 +20,8 @@
       </div>
 
       <div class="w-100 d-flex justify-content-center mt-3">
-        <%= link_to 'Confirmar', set_total_area_path, class: "btn btn-success py-4", data: { action: 'click->mapconteiner#storeValue' }, style: "width: 90%;" %>
+        <%= link_to 'Confirmar', set_total_area_path, class: "btn btn-success py-4", data: { controller: 'mapcontainer', action: 'click->map#storeValue' }, style: "width: 90%;" %>
       </div>
     </div>
-
   </div>
 </div>

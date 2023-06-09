@@ -11,50 +11,24 @@ class LandsController < ApplicationController
     @size = session[:total_area]
   end
 
+  def new_offer
+    
+  end
+
   def index
   end
 
   def set_location
-    @lands = Land.geocoded
-    # @markers = @lands.map do |land|
-    # {
-    #   lat: land.latitude,
-    #   lng: land.longitude,
-    #   info_window_html: render_to_string(partial: "info_window", locals: {land: land}),
-    #   marker_html: render_to_string(partial: "marker")
-    # }
-    # end
-  #  session[:location] = params[:land][:address]
-
-
   end
 
   def set_total_area
     @land = Land.new
-
   end
 
   def store_demo_value
-    raise
-    session[:demo_value] = params[:location]
+    session[:demo_value] = params[:demoValue]
+    session[:demo_latitude] = params[:demoLatitude]
+    session[:demo_longitude] = params[:demoLongitude]
   end
-  # def store_demo_value
-  #   raise
-  #   session[:demo_value] = params[:demoValue]
-  #   redirect_to set_total_area_path
-  #   raise
-  #   # head :ok
-  # end
 
-  # def store_demo_value
-  #   session[:demo_value] = params[:location]
-  #   redirect_to set_total_area_path
-  #   raise
-  # end
-
-  # protected
-
-  # def json_request?
-  #   request.format.json?
-  # end
 end

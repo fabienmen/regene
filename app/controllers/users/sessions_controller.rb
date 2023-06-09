@@ -24,11 +24,4 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  def store_demo_value
-    raise
-    session[:demo_value] = params[:demoValue]
-    head :ok
-    raise
-  end
-
 end
