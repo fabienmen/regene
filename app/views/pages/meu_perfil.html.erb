@@ -1,1 +1,5 @@
-<strong><%= link_to "Editar meu perfil", edit_user_registration_path, class: "nav-link active" %></strong>
+<p>User ID : <%= current_user.id %></p>
+<p>User email : <%= current_user.email %></p>
+
+
+<strong><%= link_to "Editar meu perfil", edit_user_registration_path, class: "btn btn-success" %></strong>
