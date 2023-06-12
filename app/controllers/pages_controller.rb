@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :offer]
 
-
   def home
   end
 
@@ -21,5 +20,8 @@ class PagesController < ApplicationController
       replanted_area: session[:replanted]
     )
     @offer.save
+  end
+
+  def meu_perfil
   end
 end

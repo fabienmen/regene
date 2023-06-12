@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post "/store_demo_value", to: "lands#store_demo_value"
   # post '/offer', to: 'pages#offer', as: 'user_root'
   get '/offer', to: 'pages#offer', as: 'user_root'
-
   post "/store_replanted", to: "lands#store_replanted"
+  get '/meu_perfil', to: 'pages#meu_perfil'
 
 end
