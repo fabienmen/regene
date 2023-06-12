@@ -24,10 +24,9 @@ export default class extends Controller {
     this.geocoder.addTo(this.element)
   }
   #setInputValue(event) {
-    let location =  event.result.place_name
+    let location =  event.result.text
     let latitude = event.result.geometry.coordinates[0]
     let longitude = event.result.geometry.coordinates[1]
-
     fetch("/store_demo_value", {
     method: "POST",
     headers: {
@@ -51,7 +50,5 @@ export default class extends Controller {
 
   #clearInputValue() {
     this.addressTarget.value = ""
-  }
-  storeValue() {
   }
 }

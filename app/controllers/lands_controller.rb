@@ -5,16 +5,21 @@ class LandsController < ApplicationController
 
   def set_replanted_area
     @carbon = CarbonCreditPrice.last
-    @carbon_price = CreditPerHa.last
+    @carbon_ha = CreditPerHa.last
     @offer = Offer.new
     @land = Land.new
-    @total = @carbon.year_1 * @carbon_price.year_1
+    # @total = @carbon.year_1 * @carbon_price.year_1 / 12
+    years = ("year_1".."year_30")
+    monthly_averages = []
+    years.each do |year|
+      monthly_averages << @carbon[year] * @carbon_ha[year] / 12
+    end
+    @total = monthly_averages.sum(0.0) / monthly_averages.size
     session[:total_area] = params["land"]["total_area"]
     @size = session[:total_area]
   end
 
   def new_offer
-
   end
 
   def index
