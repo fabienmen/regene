@@ -1,13 +1,25 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :offer]
+
   def home
-    @land = Land.new
   end
 
   def offer
-    # session[:demo_value]
-    # session[:demo_latitude]
-    # session[:demo_longitude]
-    # session[:demo_replanted]
+    @land = Land.new(
+      total_area: session[:total_area],
+      latitude: session[:latitude],
+      longitude: session[:longitude],
+      address: session[:location],
+      biome: "Amazonica"
+    )
+    @land.save
+    @offer = Offer.new(
+      user: current_user,
+      land: @land,
+      earning: Earning.last,
+      replanted_area: session[:replanted]
+    )
+    @offer.save
   end
 
   def meu_perfil

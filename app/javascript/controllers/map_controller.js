@@ -12,35 +12,33 @@ export default class extends Controller {
       container: this.element,
       projection: 'globe',
       style: "mapbox://styles/mapbox/satellite-streets-v12"
-
     })
+
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
       types: "country,region,place,address"
     })
+
     this.geocoder.on("result", event => this.#setInputValue(event))
     this.geocoder.on("clear", () => this.#clearInputValue())
     this.geocoder.addTo(this.element)
-    console.log(this.element)
-    // this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-    //   mapboxgl: mapboxgl }))
   }
   #setInputValue(event) {
     let location =  event.result.place_name
     let latitude = event.result.geometry.coordinates[0]
     let longitude = event.result.geometry.coordinates[1]
-    console.log(event.result.geometry.coordinates[0])
+
     fetch("/store_demo_value", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      demoValue: location,
-      demoLatitude: latitude,
-      demoLongitude: longitude
+      location: location,
+      latitude: latitude,
+      longitude: longitude
     })
-});
+  });
       new mapboxgl.Marker()
       .setLngLat([event.result.center[0], event.result.center[1]])
       .addTo(this.map)
@@ -49,13 +47,11 @@ export default class extends Controller {
        // this animation is considered essential with respect to prefers-reduced-motion
         zoom: 10
       });
-      // lastloc = [event.result.center[0], event.result.center[1]]
-      console.log(event.result.center[0])
   }
+
   #clearInputValue() {
     this.addressTarget.value = ""
   }
   storeValue() {
-    console.log("adeus")
   }
 }

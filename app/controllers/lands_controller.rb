@@ -1,11 +1,13 @@
 class LandsController < ApplicationController
   # skip_before_action :verify_authenticity_token, if: :json_request?
   skip_before_action :verify_authenticity_token
+  skip_before_action :authenticate_user!, only: [:set_replanted_area, :set_total_area, :set_location, :store_demo_value, :store_replanted]
 
   def set_replanted_area
     @carbon = CarbonCreditPrice.last
     @carbon_price = CreditPerHa.last
     @offer = Offer.new
+    @land = Land.new
     @total = @carbon.year_1 * @carbon_price.year_1
     session[:total_area] = params["land"]["total_area"]
     @size = session[:total_area]
@@ -26,19 +28,13 @@ class LandsController < ApplicationController
   end
 
   def store_demo_value
-    session[:demo_value] = params[:demoValue]
-    session[:demo_latitude] = params[:demoLatitude]
-    session[:demo_longitude] = params[:demoLongitude]
-    # session[:demo_replanted]
+    session[:location] = params[:location]
+    session[:latitude] = params[:latitude]
+    session[:longitude] = params[:longitude]
   end
 
   def store_replanted
-    # session[:demo_value] = session[:demo_value]
-    # session[:demo_latitude] = session[:demo_latitude]
-    # session[:demo_longitude] = session[:demo_longitude]
-    puts "set session"
-    session[:demo_replanted] = params[:demoReplanted]
-    puts "session saved #{session[:demo_replanted]}"
+    session[:replanted] = params[:replanted]
   end
 
 end
