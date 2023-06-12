@@ -13,6 +13,7 @@ class PagesController < ApplicationController
       biome: "Amazonica"
     )
     @land.save
+
     @offer = Offer.new(
       user: current_user,
       land: @land,
@@ -20,6 +21,14 @@ class PagesController < ApplicationController
       replanted_area: session[:replanted]
     )
     @offer.save
+    @carbon_ha = CarbonCreditPrice.last
+    @carbon = CreditPerHa.last
+    @earning = Earning.new()
+    years = ("year_1".."year_30")
+    years.each do |year|
+      @earning[year] = @carbon_ha[year] * @carbon[year] * session[:replanted].to_i
+    end
+    @earning.save
   end
 
   def meu_perfil
