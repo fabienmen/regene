@@ -15,20 +15,20 @@
     <div data-controller="replanted-size">
 
       <div class="d-none" data-replanted-size-target="total"><%= @total %></div>
-        <p class="money-header text-center"> <strong>R$<span id="money" data-replanted-size-target="money"></span></strong><span class="mes">/Mês</span></p>
-          <%= simple_form_for @offer, url: new_user_registration_path, method: :get do |f| %>
-            <%= f.input :replanted_area, as: :range, class: "ac-color" , input_html:{ min:"0", max: @size, "data-target": "replanted-size.range", "data-action": 'input->replanted-size#displaySize' }%>
+        <p class="money-header text-center"> <strong>R$<span id="reais" data-replanted-size-target="reais"></span></strong><span class="mes">/Mês</span></p>
+          <%= simple_form_for @offer, url: new_user_registration_path, method: :get, data: { replanted_size_target: "form" } do |f| %>
+            <%= f.input :replanted_area, as: :range, class: "ac-color" , input_html:{ min:"0", max: @size, "data-replanted-size-target": "range", "data-action": 'input->replanted-size#displaySize' }%>
             <br>
             <div class="d-flex justify-content-between">
               <div>
-                <p><span id="demo" data-replanted-size-target="demo"></span>Ha</p>
+                <p><span id="hectare" data-replanted-size-target="hectare"></span>Ha</p>
               </div>
               <div>
                 <p><span><%= @size %></span>Ha</p>
               </div>
             </div>
           <div class="w-100 d-flex justify-content-center mt-3">
-              <%= f.submit 'Estou Dentro!', class: "btn btn-success  w90 py-4" %>
+              <%= f.submit 'Estou Dentro!', class: "btn btn-success  w90 py-4", data: { action:'click->replanted-size#storeValue' }%>
             <% end %>
           </div>
       </div>

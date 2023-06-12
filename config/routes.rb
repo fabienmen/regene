@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   get "/set_total_area", to: "lands#set_total_area"
   # post "/new_offer", to: "lands#new_offer"
   post "/store_demo_value", to: "lands#store_demo_value"
-  get '/offer', to: 'pages#offer', as: 'user_root'
   # post '/offer', to: 'pages#offer', as: 'user_root'
-  post "/store_replanted", to: "lands#store_replanted"
+  get '/offer', to: 'pages#offer', as: 'user_root'
 
+  post "/store_replanted", to: "lands#store_replanted"
 
 end
