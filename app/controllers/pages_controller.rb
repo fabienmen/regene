@@ -1,8 +1,6 @@
 class PagesController < ApplicationController
   def home
     @land = Land.new
-
-
   end
 
   def offer
@@ -10,5 +8,8 @@ class PagesController < ApplicationController
     # session[:demo_latitude]
     # session[:demo_longitude]
     # session[:demo_replanted]
+  end
+
+  def meu_perfil
   end
 end
