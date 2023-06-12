@@ -1,0 +1,11 @@
+<%= render "shared/navbar"%>
+<div class="container" style="margin-top: 62px;">
+  <p>User ID : <%= current_user.id %></p>
+  <p>User email : <%= current_user.email %></p>
+  <p>Primeiro Nome : <%= current_user.first_name %></p>
+  <p>Último nome : <%= current_user.last_name %></p>
+  <p>CPF : <%= current_user.tax_number %></p>
+  <p>Phone Number : <%= current_user.phone_number %></p>
+
+  <strong><%= link_to "Editar meu perfil", edit_user_registration_path, class: "btn btn-success w-100 py-2" %></strong>
+</div>

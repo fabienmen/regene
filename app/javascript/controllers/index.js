@@ -16,5 +16,8 @@ application.register("map", MapController)
 import MapconteinerController from "./mapconteiner_controller"
 application.register("mapconteiner", MapconteinerController)
 
+import NavbarController from "./navbar_controller"
+application.register("navbar", NavbarController)
+
 import ReplantedSizeController from "./replanted_size_controller"
 application.register("replanted-size", ReplantedSizeController)
