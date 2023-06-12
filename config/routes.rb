@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   get '/offer', to: 'pages#offer', as: 'user_root'
   # post '/offer', to: 'pages#offer', as: 'user_root'
   post "/store_replanted", to: "lands#store_replanted"
-
-
+  get "/", to: "lands#set_total_area"
+  get '/meu_perfil', to: 'pages#meu_perfil'
 end
