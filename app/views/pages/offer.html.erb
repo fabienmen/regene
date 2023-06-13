@@ -1,13 +1,42 @@
-<h1>Land</h1>
+<%= render "shared/navbar_black_logged" %>
 
-<p><%= @land.address %></p>
-<p><%= @land.total_area %></p>
-<p><%= @land.latitude %></p>
-<p><%= @land.longitude %></p>
-<p><%= @land.biome %></p>
-<p><%= @land.registration_number %></p>
+<div class="navbar-margin-top">
+  <div class="container-fluid justify-content-center w-100">
+    <h4 class="text-center py-3 bold-20 header-green">A sua ofterta está pronta 💰🌳 </h4>
+  </div>
 
-<h1>Offer</h1>
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-12">
+    ola
+    </div>
+
+    <div class="col-12">
+    ola
+    </div>
+
+  </div>
+
+</div>
+
+
+  <h1>Land</h1>
+
+  <p><%= @land.address %></p>
+  <p><%= @land.total_area %></p>
+  <p><%= @land.latitude %></p>
+  <p><%= @land.longitude %></p>
+  <p><%= @land.biome %></p>
+  <p><%= @land.registration_number %></p>
+
+  <h1>Offer</h1>
+
+  <p><%= @offer.replanted_area %></p>
+  <p><%= @offer.earning.year_1 %></p>
+
+</div>
 
 <p><%= @offer.replanted_area %></p>
 
@@ -17,3 +46,4 @@
 <p><%= @earning.year_10 %></p>
 <p><%= @earning.year_20 %></p>
 <p><%= @earning.year_30 %></p>
+
