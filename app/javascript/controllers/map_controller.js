@@ -22,7 +22,6 @@ export default class extends Controller {
     })
 
     this.geocoder.on("result", event => this.#setInputValue(event))
-    this.geocoder.on("clear", () => this.#clearInputValue())
     this.geocoder.addTo(this.element)
   }
 
@@ -41,17 +40,15 @@ export default class extends Controller {
       longitude: longitude
     })
   });
-      new mapboxgl.Marker()
-      .setLngLat([event.result.center[0], event.result.center[1]])
-      .addTo(this.map)
-      this.map.flyTo({
-        center: [event.result.center[0], event.result.center[1]],
-       // this animation is considered essential with respect to prefers-reduced-motion
-        zoom: 10
-      });
-  }
 
-  #clearInputValue() {
-    this.addressTarget.value = ""
+  new mapboxgl.Marker()
+    .remove()
+    .setLngLat([event.result.center[0], event.result.center[1]])
+    .addTo(this.map)
+    this.map.flyTo({
+      center: [event.result.center[0], event.result.center[1]],
+      // this animation is considered essential with respect to prefers-reduced-motion
+      zoom: 8
+    });
   }
 }
