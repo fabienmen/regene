@@ -29,6 +29,14 @@ class PagesController < ApplicationController
       @earning[year] = @carbon_ha[year] * @carbon[year] * session[:replanted].to_i
     end
     @earning.save
+
+    monthly_averages = []
+    years.each do |year|
+      monthly_averages << @carbon[year] * @carbon_ha[year] / 12
+    end
+    @total = monthly_averages.sum(0.0) / monthly_averages.size
+
+    @everage = @total * session[:replanted].to_i
   end
 
   def meu_perfil
