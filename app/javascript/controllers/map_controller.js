@@ -13,12 +13,12 @@ export default class extends Controller {
       projection: 'globe',
       style: "mapbox://styles/mapbox/satellite-streets-v12",
       center: [ -53.198048418153014, -8.240508731394382],
-      zoom: 1
+      zoom: 2
     })
 
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
-      types: "procurar",
+      types: "country,region,place,postcode,locality,neighborhood,address",
     })
 
     this.geocoder.on("result", event => this.#setInputValue(event))
