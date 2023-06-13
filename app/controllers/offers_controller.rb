@@ -7,6 +7,8 @@ class OffersController < ApplicationController
   def index
     @offers = Offer.all
     @offers = @offers.where(user_id: current_user)
+    @carbon = CarbonCreditPrice.last
+    @carbon_ha = CreditPerHa.last
   end
 
   def edit_set_replanted_area
@@ -41,6 +43,14 @@ class OffersController < ApplicationController
   def edit_store_replanted
     @offer.replanted_area = params[:replanted]
     @offer.save
+    @carbon_ha = CarbonCreditPrice.last
+    @carbon = CreditPerHa.last
+    @earning = @offer.earning
+    years = ("year_1".."year_30")
+    years.each do |year|
+      @earning[year] = @carbon_ha[year] * @carbon[year] * params[:replanted].to_i
+    end
+    @earning.save
   end
 
   private

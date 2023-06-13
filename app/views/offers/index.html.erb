@@ -23,7 +23,14 @@
 
           <div class="offer-card-image d-flex flex-column">
             <div class="d-flex flex-column flex-grow-1 justify-content-center">
-              <h2><strong>R$ <%= offer.earning.year_1 %></strong></h2>
+              <% monthly_averages = []%>
+              <% years = ("year_1".."year_30") %>
+              <% years.each do |year| %>
+                <% monthly_averages << @carbon[year] * @carbon_ha[year] / 12 %>
+              <% end %>
+              <% total = monthly_averages.sum(0.0) / monthly_averages.size %>
+              <% everage = total * offer.replanted_area %>
+              <h2><strong>R$ <%= everage %></strong></h2>
               <p>/ Mês</p>
             </div>
           </div>
