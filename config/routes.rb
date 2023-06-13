@@ -12,9 +12,24 @@ Rails.application.routes.draw do
   get "/set_total_area", to: "lands#set_total_area"
   # post "/new_offer", to: "lands#new_offer"
   post "/store_demo_value", to: "lands#store_demo_value"
+
   # post '/offer', to: 'pages#offer', as: 'user_root'
   get '/offer', to: 'pages#offer', as: 'user_root'
   post "/store_replanted", to: "lands#store_replanted"
   get '/meu_perfil', to: 'pages#meu_perfil'
+  get "/my_offers", to: "offers#index"
 
+  resources :offers, only: [:edit, :update] do
+    member do
+      get "edit_set_replanted_area"
+      patch "set_replanted_area", to: "offers#update_set_replanted_area"
+      post "/store_edit_value", to: "lands#store_edit_value"
+      get "edit_set_location"
+      patch "set_location", to: "lands#update_set_location"
+      get "edit_set_total_area"
+      patch "set_total_area", to: "lands#update_set_total_area"
+    end
+  end
+
+  resources :lands, only: [:edit, :update]
 end

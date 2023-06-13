@@ -1,0 +1,8 @@
+<h1>As minhas offers</h1>
+
+
+<% @offers.each do |offer| %>
+  <%= link_to edit_set_location_offer_path(offer) do %>
+    <p><%= offer.replanted_area %></p>
+  <% end  %>
+<% end %>
