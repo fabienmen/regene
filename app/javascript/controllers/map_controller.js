@@ -90,7 +90,7 @@ export default class extends Controller {
       });
     });
   }
-  
+
   selectcolor(name) {
     switch (name) {
       case 'Caatinga':
@@ -106,7 +106,9 @@ export default class extends Controller {
       case 'Mata Atlântica':
         return "#2929a3";
     }
-mapzoom() {
+  }
+
+  mapzoom() {
     const zoom = 2;
     return this.editModeValue ? 5 : zoom;
   }
