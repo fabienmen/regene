@@ -1,7 +1,6 @@
-<% session["referer"] = request.referer.match?(/replanted_area/) if request.referer %>
+<% session["referer"] = (request.referer.match?(/replanted_area/) || request.referer.match?(/sign-up/)) if request.referer %>
+<%= render "shared/navbar_black" %>
 <% if session["referer"] %>
-
-  <%= render "shared/navbar_black" %>
 
   <div class="progress navbar-margin-top" style="height: 6px;">
     <div class="progress-bar bg-progress" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -13,7 +12,7 @@
   </div>
 
   <% else %>
-    <div class="container justify-content-center w-100">
+      <div class="container navbar-margin-top justify-content-center w-100">
       <h4 class="text-center py-3 bold-20 header-green">Bora criar a sua conta</h4>
     </div>
 
