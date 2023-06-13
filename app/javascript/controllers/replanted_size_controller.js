@@ -9,7 +9,7 @@ export default class extends Controller {
     this.reaisTarget.innerHTML = this.hectareTarget.innerHTML * this.totalTarget.innerHTML
   }
 
-  displaySize(event) {
+  displaySize() {
     this.hectareTarget.innerHTML = this.rangeTarget.value
     this.reaisTarget.innerHTML = this.hectareTarget.innerHTML * this.totalTarget.innerHTML
   }
