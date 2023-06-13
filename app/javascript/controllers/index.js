@@ -13,9 +13,6 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import MapconteinerController from "./mapconteiner_controller"
-application.register("mapconteiner", MapconteinerController)
-
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
 

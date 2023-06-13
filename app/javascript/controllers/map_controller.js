@@ -11,18 +11,21 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       projection: 'globe',
-      style: "mapbox://styles/mapbox/satellite-streets-v12"
+      style: "mapbox://styles/mapbox/satellite-streets-v12",
+      center: [ -53.198048418153014, -8.240508731394382],
+      zoom: 1
     })
 
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
-      types: "country,region,place,address"
+      types: "procurar",
     })
 
     this.geocoder.on("result", event => this.#setInputValue(event))
     this.geocoder.on("clear", () => this.#clearInputValue())
     this.geocoder.addTo(this.element)
   }
+
   #setInputValue(event) {
     let location =  event.result.text
     let latitude = event.result.geometry.coordinates[0]
