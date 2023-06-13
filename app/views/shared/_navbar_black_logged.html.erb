@@ -1,0 +1,52 @@
+<nav class="navbar navbar-black-change fixed-top navbar-expand-lg navbar-light border-bottom-4" data-controller="navbar">
+  <div class="container-fluid">
+    <%= link_to root_path do %>
+      <%= image_tag "logo_black", class: "navbar-brand", style: "height: 45px;"%>
+    <% end %>
+    <button class="nav-toggle-button navbar-toggler border-0" type="button" data-action="click->navbar#background" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon toggler-black"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <strong><%= link_to "Meu perfil", meu_perfil_path, class: "nav-link active" %></strong>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#"><strong>Minhas ofertas</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#"><strong>Como funciona</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#"><strong>Quem somos</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#"><strong>Contatar</strong></a>
+          </li>
+          <li class="nav-item">
+            <strong><%= link_to "Sair", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link active" %></strong>
+          </li>
+
+        <% else %>
+          <li class="nav-item">
+            <strong><%= link_to "Logar", new_user_session_path, class: "nav-link active" %></strong>
+          </li>
+        <% end %>
+
+
+        <%# <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li> %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<%# desculpa invadir html com um javascript, isso do taget action nao sei que nao funciona bem %>
