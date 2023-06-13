@@ -6,14 +6,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  post "/set_replanted_area", to: "lands#set_replanted_area"
+  # post "/set_replanted_area", to: "lands#set_replanted_area"
   get "/set_replanted_area", to: "lands#set_replanted_area"
   get "/set_location", to: "lands#set_location"
   get "/set_total_area", to: "lands#set_total_area"
-  # post "/new_offer", to: "lands#new_offer"
   post "/store_demo_value", to: "lands#store_demo_value"
-
-  # post '/offer', to: 'pages#offer', as: 'user_root'
   get '/offer', to: 'pages#offer', as: 'user_root'
   post "/store_replanted", to: "lands#store_replanted"
   get '/meu_perfil', to: 'pages#meu_perfil'
@@ -23,11 +20,12 @@ Rails.application.routes.draw do
     member do
       get "edit_set_replanted_area"
       patch "set_replanted_area", to: "offers#update_set_replanted_area"
-      post "/store_edit_value", to: "lands#store_edit_value"
+      post "/edit_store_replanted", to: "offers#edit_store_replanted"
       get "edit_set_location"
-      patch "set_location", to: "lands#update_set_location"
+      patch "set_location", to: "offers#update_set_location"
+      post "/store_edit_value", to: "offers#store_edit_value"
       get "edit_set_total_area"
-      patch "set_total_area", to: "lands#update_set_total_area"
+      patch "set_total_area", to: "offers#update_set_total_area"
     end
   end
 

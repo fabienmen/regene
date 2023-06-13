@@ -124,15 +124,15 @@ export default class extends Controller {
       let latitude = event.result.geometry.coordinates[0]
       let longitude = event.result.geometry.coordinates[1]
       fetch(`/offers/${this.offerValue}/store_edit_value`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        location: location,
-        latitude: latitude,
-        longitude: longitude
-      })
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          location: location,
+          latitude: latitude,
+          longitude: longitude
+        })
       });
 
     } else {

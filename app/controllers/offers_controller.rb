@@ -1,34 +1,34 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [ :edit, :update, :edit_set_location, :edit_set_total_area ]
+  before_action :set_offer, only: [ :edit_set_location, :edit_set_total_area, :store_edit_value, :edit_set_replanted_area, :edit_store_replanted ]
 
-  def new
+  skip_before_action :verify_authenticity_token
 
-  end
 
   def index
     @offers = Offer.all
     @offers = @offers.where(user_id: current_user)
   end
 
-  def edit
-
-  end
-  
   def edit_set_replanted_area
-    @land = Land.find(params[:id])
+    @carbon = CarbonCreditPrice.last
+    @carbon_ha = CreditPerHa.last
+    years = ("year_1".."year_30")
+    monthly_averages = []
+    years.each do |year|
+      monthly_averages << @carbon[year] * @carbon_ha[year] / 12
+    end
+    @total = monthly_averages.sum(0.0) / monthly_averages.size
+    @land = @offer.land
     @land.total_area = params[:land][:total_area]
     @land.save
   end
 
   def store_edit_value
+    @land = @offer.land
     @land.latitude = params[:latitude]
     @land.longitude = params[:longitude]
     @land.address = params[:location]
     @land.save
-  end
-
-  def update_set_replanted_area
-
   end
 
   def edit_set_total_area
@@ -38,8 +38,9 @@ class OffersController < ApplicationController
   def edit_set_location
   end
 
-  def update_set_total_area
-    raise
+  def edit_store_replanted
+    @offer.replanted_area = params[:replanted]
+    @offer.save
   end
 
   private

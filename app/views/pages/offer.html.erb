@@ -31,7 +31,7 @@
           <div class="d-flex flex-column flex-grow-1">
             <div class="offer-card-icons">
               <%= link_to image_tag("xmark.svg", width: 25), root_path %>
-              <%= link_to image_tag("edit.svg", width: 25), root_path %>
+              <%= link_to image_tag("edit.svg", width: 25), edit_set_location_offer_path(offer) %>
             </div>
             <div class="offer-card-text">
               <p>Para <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
