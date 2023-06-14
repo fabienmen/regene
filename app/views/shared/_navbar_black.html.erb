@@ -1,8 +1,8 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark border-bottom-4">
   <div class="container-fluid justify-content-between">
     <%= image_tag "arrow_left.png", style: "height: 35px;", class: "me-5" %>
-    <a class="navbar-brand" href="#">
+    <%= link_to root_path do %>
       <%= image_tag "logo_black.png", style: "height: 35px;" %>
-    </a>
+    <% end %>
   </div>
 </nav>
