@@ -1,4 +1,4 @@
-<%= render "shared/navbar_black_logged" %>
+**<%= render "shared/navbar_black_logged" %>
 
 
 <% if current_user.offers.count < 2 %>
@@ -37,7 +37,7 @@
 
           <div class="d-flex flex-column flex-grow-1">
             <div class="offer-card-icons">
-            
+
               <%= link_to image_tag("xmark.svg", width: 25), offer_path(offer), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
               <%= link_to image_tag("edit.svg", width: 25), edit_set_location_offer_path(offer) %>
             </div>

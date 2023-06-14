@@ -12,7 +12,7 @@ export default class extends Controller {
   connect() {
     console.log(this.modeValue)
     this.hectareTarget.innerHTML = this.rangeTarget.value
-    this.reaisTarget.innerHTML = this.hectareTarget.innerHTML * this.totalTarget.innerHTML
+    this.reaisTarget.innerHTML = (this.hectareTarget.innerHTML * this.totalTarget.innerHTML).toLocaleString("pt-BR")
   }
 
   displaySize() {
