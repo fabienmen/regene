@@ -1,3 +1,7 @@
+<%# <% content_for :meta_title, "#{@restaurant.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<%# <% content_for :meta_description, @restaurant.description %>
+<%# <% content_for :meta_image, cl_image_path(@restaurant.photo.key) if @restaurant.photo.attached? %> 
+
 <%= render "shared/navbar_black_logged" %>
 <div class="navbar-margin-top">
     <div class="container-fluid justify-content-center w-100">
@@ -5,40 +9,38 @@
     </div>
 </div>
 <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="offer-card">
-          <div class="offer-card-image d-flex flex-column">
-            <div class="d-flex flex-column flex-grow-1 justify-content-center">
-              <% monthly_averages = []%>
-              <% years = ("year_1".."year_30") %>
-              <% years.each do |year| %>
-                <% monthly_averages << @carbon[year] * @carbon_ha[year] / 12 %>
-              <% end %>
-              <% total = monthly_averages.sum(0.0) / monthly_averages.size %>
-              <% everage = total * @offer.replanted_area %>
-              <h2><strong>R$ <%= everage %></strong></h2>
-              <p>/ Mês</p>
-            </div>
-          </div>
-
-          <div class="d-flex flex-column flex-grow-1">
-            <div class="offer-card-text">
-              <p>Para <strong><%= @offer.user.first_name %> <%= @offer.user.last_name %></strong></p>
-              <p>Replantando <%= @offer.replanted_area %> hectares </p>
-              <p>de floresta <%= @offer.land.biome %></p>
-              <p>em <%= @offer.land.address %> </p>
-              <a href=""></a>
-            </div>
-            <%= link_to root_path, class: "offer-card-button" do %>
-              <%= image_tag("whatsapp.svg", width: 25) %> Compartilhar
+  <div class="row">
+    <div class="col-12">
+      <div class="offer-card">
+        <div class="offer-card-image d-flex flex-column">
+          <div class="d-flex flex-column flex-grow-1 justify-content-center">
+            <% monthly_averages = []%>
+            <% years = ("year_1".."year_30") %>
+            <% years.each do |year| %>
+              <% monthly_averages << @carbon[year] * @carbon_ha[year] / 12 %>
             <% end %>
+            <% total = monthly_averages.sum(0.0) / monthly_averages.size %>
+            <% everage = total * @offer.replanted_area %>
+            <h2><strong>R$ <%= everage %></strong></h2>
+            <p>/ Mês</p>
           </div>
+        </div>
+
+        <div class="d-flex flex-column flex-grow-1">
+          <div class="offer-card-text">
+            <p>Para <strong><%= @offer.user.first_name %> <%= @offer.user.last_name %></strong></p>
+            <p>Replantando <%= @offer.replanted_area %> hectares </p>
+            <p>de floresta <%= @offer.land.biome %></p>
+            <p>em <%= @offer.land.address %> </p>
+            <a href=""></a>
+          </div>
+          <%= link_to root_path, class: "offer-card-button" do %>
+            <%= image_tag("whatsapp.svg", width: 25) %> Compartilhar
+          <% end %>
         </div>
       </div>
     </div>
-
-
+  </div>
   <div class="row d-flex mt-4">
     <p style="color: #9797A4" class="text-center">Em breve entraremos em contato com você, fica ligado.</p>
   </div>
