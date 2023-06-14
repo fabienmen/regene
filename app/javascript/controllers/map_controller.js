@@ -132,38 +132,60 @@ export default class extends Controller {
   }
 
   #setInputValue(event) {
+    let location =  event.result.text
+    let latitude = event.result.geometry.coordinates[0]
+    let longitude = event.result.geometry.coordinates[1]
+    let url
     if (this.editModeValue) {
-      let location =  event.result.text
-      let latitude = event.result.geometry.coordinates[0]
-      let longitude = event.result.geometry.coordinates[1]
-      fetch(`/offers/${this.offerValue}/store_edit_value`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          location: location,
-          latitude: latitude,
-          longitude: longitude
-        })
-      });
-
+      url = `/offers/${this.offerValue}/store_edit_value`
     } else {
-      let location = event.result.text
-      let latitude = event.result.geometry.coordinates[0]
-      let longitude = event.result.geometry.coordinates[1]
-      fetch("/store_demo_value", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          location: location,
-          latitude: latitude,
-          longitude: longitude
-        })
-      });
+      url = "/store_demo_value"
     }
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        location: location,
+        latitude: latitude,
+        longitude: longitude
+      })
+    });
+
+    // if (this.editModeValue) {
+    //   let location =  event.result.text
+    //   let latitude = event.result.geometry.coordinates[0]
+    //   let longitude = event.result.geometry.coordinates[1]
+    //   fetch(`/offers/${this.offerValue}/store_edit_value`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       location: location,
+    //       latitude: latitude,
+    //       longitude: longitude
+    //     })
+    //   });
+
+    // } else {
+    //   let location = event.result.text
+    //   let latitude = event.result.geometry.coordinates[0]
+    //   let longitude = event.result.geometry.coordinates[1]
+    //   fetch("/store_demo_value", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       location: location,
+    //       latitude: latitude,
+    //       longitude: longitude
+    //     })
+    //   });
+    // }
 
         if(this.marker != undefined){
           this.marker.remove()
@@ -179,20 +201,22 @@ export default class extends Controller {
           let lngLat = e.target.getLngLat();
           console.log(lngLat['lat'])
           console.log(lngLat['lng'])
+          fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              location: location,
+              latitude: lngLat['lat'],
+              longitude: lngLat['lng']
+            })
+          })
         })
         this.map.flyTo({
           center: [event.result.center[0], event.result.center[1]],
         // this animation is considered essential with respect to prefers-reduced-motion
           zoom: 10
         });
-
-
-
-
-      }
-
-
-  #clearInputValue() {
-    this.addressTarget.value = ""
   }
 }
