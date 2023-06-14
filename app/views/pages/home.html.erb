@@ -4,28 +4,34 @@
     <h1><strong>Refloresta a sua terra e <u>ganhe mais dinheiro</u></strong></h1>
   </div>
 
-  <div class="position-absolute w90 top-100 start-50 translate-middle">
+  <div class="container position-absolute w-100 top-100 start-50 translate-middle">
     <%= link_to set_location_path do%>
     <div class="btn btn-success w-100 py-3 border-radius-4">Comece A Ganhar</div>
     <% end %>
   </div>
 </div>
 
-<button class="btn-unique w-100 pt-5 pb-2 text-gray" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  <div class="d-inline-flex">
-    <div>
-      <i class="fa-solid fa-circle-arrow-down px-1"> </i>
-    </div>
-    <div >
-      Saiba mais
-    </div>
-  </div>
-</button>
+<div class="container mt-5">
+  <h5 class="text-center py-3 bold-20 header-green">Entenda como funciona:</h5>
 
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center">
+      <%= image_tag("draw_land.svg", width: 60 ) %>
+      <p class="ms-3 mb-0"><span class="regular-24 header-green">1.</span> Como agricultor, você possui um terreno. Ele pode ser mais lucrativo do que apenas para cultivo ou pastoreio</p>
+    </div>
+    <div class="col-12 d-flex mt-4">
+      <%= image_tag("draw_replant.svg", width: 60 ) %>
+      <p class="ms-3 mb-0"><span class="regular-24 header-green">2.</span> Ao restaurar seu terreno com vegetação nativa, você pode ganhar uma média de R$1.000 por hectare por mês</p>
+    </div>
+    <div class="col-12 d-flex mt-4 mb-5">
+      <%= image_tag("draw_earn.svg", width: 60 ) %>
+      <div class="ms-3">
+        <p class="mb-0"><span class="regular-24 header-green">3.</span> Tudo resolvido, basta registrar-se na Regene, nós o auxiliaremos a regenerar seu terreno e lucrar com isso</p>
+        <%= link_to set_location_path, class: "header-green" do%>
+        <div class="">Simular a minha renda</div>
+        <% end %>
+      </div>
+    </div>
   </div>
+
 </div>
-
-<%#= image_tag "amazon", class: "img-banner"%>
