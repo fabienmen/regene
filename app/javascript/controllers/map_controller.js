@@ -148,19 +148,19 @@ export default class extends Controller {
       });
 
     } else {
-      let location =  event.result.text
+      let location = event.result.text
       let latitude = event.result.geometry.coordinates[0]
       let longitude = event.result.geometry.coordinates[1]
       fetch("/store_demo_value", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        location: location,
-        latitude: latitude,
-        longitude: longitude
-      })
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          location: location,
+          latitude: latitude,
+          longitude: longitude
+        })
       });
     }
 

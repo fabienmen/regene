@@ -1,5 +1,4 @@
 class LandsController < ApplicationController
-  # skip_before_action :verify_authenticity_token, if: :json_request?
   before_action :set_land, only: [ :update, :store_edit_value ]
 
   skip_before_action :verify_authenticity_token

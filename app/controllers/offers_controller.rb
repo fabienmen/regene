@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [ :edit_set_location, :edit_set_total_area, :store_edit_value, :edit_set_replanted_area, :edit_store_replanted, :destroy ]
+  before_action :set_offer, only: [ :edit_set_location, :edit_set_total_area, :store_edit_value, :edit_set_replanted_area, :edit_store_replanted, :destroy, :show ]
 
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!, only: [:show]
@@ -59,7 +59,6 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find(params[:id])
     @carbon_ha = CarbonCreditPrice.last
     @carbon = CreditPerHa.last
   end
