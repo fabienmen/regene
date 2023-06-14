@@ -1,22 +1,10 @@
-**<%= render "shared/navbar_black_logged" %>
-
-
-<% if current_user.offers.count < 2 %>
-  <div class="navbar-margin-top">
+<%= render "shared/navbar_black_logged" %>
+<div class="navbar-margin-top">
     <div class="container-fluid justify-content-center w-100">
       <h4 class="text-center py-3 bold-20 header-green">A sua ofterta está pronta 💰🌳 </h4>
     </div>
-  </div>
- <% else %>
-  <div class="navbar-margin-top">
-    <div class="container-fluid justify-content-center w-100">
-      <h4 class="text-center py-3 bold-20 header-green">As suas ofertas estão prontas 💰🌳 </h4>
-    </div>
-  </div>
- <% end %>
-
+</div>
 <div class="container">
-  <% current_user.offers.each do |offer| %>
     <div class="row">
       <div class="col-12">
         <div class="offer-card">
@@ -28,33 +16,28 @@
                 <% monthly_averages << @carbon[year] * @carbon_ha[year] / 12 %>
               <% end %>
               <% total = monthly_averages.sum(0.0) / monthly_averages.size %>
-              <% everage = total * offer.replanted_area %>
+              <% everage = total * @offer.replanted_area %>
               <h2><strong>R$ <%= everage %></strong></h2>
               <p>/ Mês</p>
             </div>
           </div>
 
           <div class="d-flex flex-column flex-grow-1">
-            <div class="offer-card-icons">
-
-              <%= link_to image_tag("xmark.svg", width: 25), offer_path(offer), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-              <%= link_to image_tag("edit.svg", width: 25), edit_set_location_offer_path(offer) %>
-            </div>
             <div class="offer-card-text">
-              <p>Para <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
-              <p>Replantando <%= offer.replanted_area %> hectares </p>
-              <p>de floresta <%= offer.land.biome %></p>
-              <p>em <%= offer.land.address %> </p>
+              <p>Para <strong><%= @offer.user.first_name %> <%= @offer.user.last_name %></strong></p>
+              <p>Replantando <%= @offer.replanted_area %> hectares </p>
+              <p>de floresta <%= @offer.land.biome %></p>
+              <p>em <%= @offer.land.address %> </p>
+              <a href=""></a>
             </div>
-            <%= link_to "https://web.whatsapp.com/send?text=http://www.regene.app/offers/#{offer.id}", class: "offer-card-button" do %>
+            <%= link_to root_path, class: "offer-card-button" do %>
               <%= image_tag("whatsapp.svg", width: 25) %> Compartilhar
             <% end %>
-
           </div>
         </div>
       </div>
     </div>
-  <% end %>
+
 
   <div class="row d-flex mt-4">
     <p style="color: #9797A4" class="text-center">Em breve entraremos em contato com você, fica ligado.</p>

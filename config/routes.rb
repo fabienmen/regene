@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   get '/meu_perfil', to: 'pages#meu_perfil'
   get "/my_offers", to: "offers#index"
 
-  resources :offers, only: [:edit, :update, :destroy] do
+
+  resources :offers, only: [:edit, :update, :destroy, :show] do
     member do
       get "edit_set_replanted_area"
       patch "set_replanted_area", to: "offers#update_set_replanted_area"
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
       post "/store_edit_value", to: "offers#store_edit_value"
       get "edit_set_total_area"
       patch "set_total_area", to: "offers#update_set_total_area"
+
     end
   end
 

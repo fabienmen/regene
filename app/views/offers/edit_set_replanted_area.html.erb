@@ -19,17 +19,19 @@
       <div class="d-none" data-replanted-size-target="total"><%= @total %></div>
         <div class="card w90 shadow-boxing mx-auto rounded-4 p-3">
           <p class="money-header text-center">
-            <strong>R$<span id="reais" data-replanted-size-target="reais"></span></strong>
-            <span class="mes">/Mês</span>
+            <strong style="color: black">R$<span id="reais" data-replanted-size-target="reais"></span></strong>
+            <span style="color: #9797A4" class="mes">/Mês</span>
+            <p id="reflorestada" style="color: #9797A4" class="text-center">Area reflorestada de</p>
+            <p class="text-center bold-20 header-green"><span id="hectare" data-replanted-size-target="hectare"></span> Hectares</p>
           </p>
           <%= simple_form_for @offer, url: my_offers_path, method: :get, data: { replanted_size_target: "form" } do |f| %>
             <%= f.input :replanted_area, label: false, wrapper: false, as: :range, input_html:{ min:"0", max: @land.total_area, "data-replanted-size-target": "range", "data-action": 'input->replanted-size#displaySize' }%>
           <div class="d-flex justify-content-between">
             <div>
-              <p><span id="hectare" data-replanted-size-target="hectare"></span>Ha</p>
+              <p style="color: #9797A4"><span>0</span>Ha</p>
             </div>
             <div>
-              <p><span><%= @land.total_area %></span>Ha</p>
+              <p style="color: #9797A4"><span><%= @land.total_area %></span>Ha</p>
             </div>
           </div>
         </div>
