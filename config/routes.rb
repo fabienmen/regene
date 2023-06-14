@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/meu_perfil', to: 'pages#meu_perfil'
   get "/my_offers", to: "offers#index"
 
-  resources :offers, only: [:edit, :update] do
+  resources :offers, only: [:edit, :update, :destroy] do
     member do
       get "edit_set_replanted_area"
       patch "set_replanted_area", to: "offers#update_set_replanted_area"

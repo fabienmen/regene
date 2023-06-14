@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [ :edit_set_location, :edit_set_total_area, :store_edit_value, :edit_set_replanted_area, :edit_store_replanted ]
+  before_action :set_offer, only: [ :edit_set_location, :edit_set_total_area, :store_edit_value, :edit_set_replanted_area, :edit_store_replanted, :destroy ]
 
   skip_before_action :verify_authenticity_token
 
@@ -9,6 +9,11 @@ class OffersController < ApplicationController
     @offers = @offers.where(user_id: current_user)
     @carbon = CarbonCreditPrice.last
     @carbon_ha = CreditPerHa.last
+  end
+
+  def destroy
+    @offer.destroy
+    redirect_to my_offers_path, status: :see_other
   end
 
   def edit_set_replanted_area
