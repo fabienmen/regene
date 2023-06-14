@@ -1,11 +1,13 @@
-<%= render "shared/navbar"%>
-<div class="container" style="margin-top: 62px;">
-  <p>User ID : <%= current_user.id %></p>
-  <p>User email : <%= current_user.email %></p>
-  <p>Primeiro Nome : <%= current_user.first_name %></p>
-  <p>Último nome : <%= current_user.last_name %></p>
-  <p>CPF : <%= current_user.tax_number %></p>
-  <p>Phone Number : <%= current_user.phone_number %></p>
+<%= render "shared/navbar_black_logged"%>
+<div class="container" style="margin-top: 75px;">
+  <div class="card my-3 p-2 rounded-border-3">
+    <h2>Profile Info</h2>
+    <span>User email: <%= current_user.email %></span>
+    <span>Primeiro Nome: <%= current_user.first_name %></span>
+    <span>Último nome: <%= current_user.last_name %></span>
+    <span>CPF: <%= current_user.tax_number %></span>
+    <span>Phone Number: <%= current_user.phone_number %></span>
+  </div>
 
   <strong><%= link_to "Editar meu perfil", edit_user_registration_path, class: "btn btn-success w-100 py-2" %></strong>
 </div>
