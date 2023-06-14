@@ -21,21 +21,6 @@ class LandsController < ApplicationController
     @size = session[:total_area]
   end
 
-  # def edit_set_location
-  # end
-
-
-
-  # def update
-  #   raise
-  # end
-
-
-  # def new_offer
-  # end
-
-  # def index
-  # end
 
   def set_location
   end
