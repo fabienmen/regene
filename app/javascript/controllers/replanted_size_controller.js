@@ -5,46 +5,39 @@ import { preventOverflow } from "@popperjs/core"
 export default class extends Controller {
   static values = {
     mode: String,
-    offer: Number
+    offer: Number,
+    total: Number
   }
 
-  static targets = ["reais", "hectare", "range", "total", "form"]
+  static targets = ["reais", "hectare", "range", "form"]
+
   connect() {
-    console.log(this.modeValue)
     this.hectareTarget.innerHTML = this.rangeTarget.value
-    this.reaisTarget.innerHTML = (this.hectareTarget.innerHTML * this.totalTarget.innerHTML).toLocaleString("pt-BR")
+    this.reaisTarget.innerHTML = (this.hectareTarget.innerHTML * this.totalValue).toLocaleString("pt-BR")
   }
 
   displaySize() {
     this.hectareTarget.innerHTML = this.rangeTarget.value
-    this.reaisTarget.innerHTML = this.hectareTarget.innerHTML * this.totalTarget.innerHTML
+    this.reaisTarget.innerHTML = this.hectareTarget.innerHTML * this.totalValue
   }
 
   storeValue(event) {
     event.preventDefault()
-
     let replanted = this.hectareTarget.innerHTML
-
-    if (this.modeValue) {
-      fetch(`/offers/${this.offerValue}/edit_store_replanted`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          replanted: replanted
-        })
-      }).then(() => window.location = this.formTarget.action);
+    let url
+    if(this.modeValue === "true") {
+      url = `/offers/${this.offerValue}/edit_store_replanted`
     } else {
-      fetch("/store_replanted", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          replanted: replanted
-        })
-      }).then(() => window.location = this.formTarget.action);
+      url = "/store_replanted"
     }
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        replanted: replanted
+      })
+    }).then(() => window.location = this.formTarget.action);
   }
 }
