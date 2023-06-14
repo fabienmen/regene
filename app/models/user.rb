@@ -8,8 +8,7 @@ class User < ApplicationRecord
          :registerable,
          :recoverable,
          :rememberable,
-         # :validatable,
-         authentication_keys: [:phone_number]
+         :validatable
 
   validates :phone_number, presence: true, uniqueness: true
 
