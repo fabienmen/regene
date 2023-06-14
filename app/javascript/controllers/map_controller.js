@@ -9,8 +9,7 @@ export default class extends Controller {
     editMode: String,
     latitude: Number,
     longitude: Number,
-    offer: Number,
-    marker: Array
+    offer: Number
   }
 
   connect() {
@@ -52,6 +51,14 @@ export default class extends Controller {
   // biome
   layersonmap(biomes) {
     biomes.features.forEach(biome => {
+      console.log(biome);
+
+      console.log(biome.geometry.type);
+
+      console.log(biome.properties.Name);
+
+      console.log(biome.geometry.coordinates);
+
       this.map.on('load', () => {
         // Add a data source containing GeoJSON data.
         this.map.addSource(biome.properties.Name, {
@@ -163,12 +170,7 @@ export default class extends Controller {
       })
       });
     }
-
-        if (this.marker != undefined) {
-          this.marker.remove()
-        }
-
-        this.marker = new mapboxgl.Marker({
+        new mapboxgl.Marker({
 
             draggable: true
 
@@ -180,9 +182,6 @@ export default class extends Controller {
         // this animation is considered essential with respect to prefers-reduced-motion
           zoom: 10
         });
-
-
-
 
   }
 
