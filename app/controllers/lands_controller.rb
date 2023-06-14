@@ -22,10 +22,14 @@ class LandsController < ApplicationController
 
 
   def set_location
+    session[:location] = nil
   end
 
   def set_total_area
     @land = Land.new
+    if (session[:location] == nil)
+      redirect_to set_location_path
+    end
   end
 
   def store_demo_value
