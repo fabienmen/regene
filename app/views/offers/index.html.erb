@@ -1,8 +1,62 @@
-<h1>As minhas offers</h1>
+<%= render "shared/navbar_black_logged" %>
 
 
-<% @offers.each do |offer| %>
-  <%= link_to edit_set_location_offer_path(offer) do %>
-    <p><%= offer.replanted_area %></p>
-  <% end  %>
-<% end %>
+<% if current_user.offers.count < 2 %>
+  <div class="navbar-margin-top">
+    <div class="container-fluid justify-content-center w-100">
+      <h4 class="text-center py-3 bold-20 header-green">A sua ofterta está pronta 💰🌳 </h4>
+    </div>
+  </div>
+ <% else %>
+  <div class="navbar-margin-top">
+    <div class="container-fluid justify-content-center w-100">
+      <h4 class="text-center py-3 bold-20 header-green">As suas ofertas estão prontas 💰🌳 </h4>
+    </div>
+  </div>
+ <% end %>
+
+<div class="container">
+  <% current_user.offers.each do |offer| %>
+    <div class="row">
+      <div class="col-12">
+        <div class="offer-card">
+
+          <div class="offer-card-image d-flex flex-column">
+            <div class="d-flex flex-column flex-grow-1 justify-content-center">
+              <h2><strong>R$ <%= offer.earning.year_1 %></strong></h2>
+              <p>/ Mês</p>
+            </div>
+          </div>
+
+          <div class="d-flex flex-column flex-grow-1">
+            <div class="offer-card-icons">
+              <%= link_to image_tag("xmark.svg", width: 25), root_path %>
+              <%= link_to image_tag("edit.svg", width: 25), edit_set_location_offer_path(offer) %>
+            </div>
+            <div class="offer-card-text">
+              <p>Para <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
+              <p>Replantando <%= offer.replanted_area %> hectares </p>
+              <p>de floresta <%= offer.land.biome %></p>
+              <p>em <%= offer.land.address %> </p>
+              <a href=""></a>
+            </div>
+
+            <%= link_to root_path, class: "offer-card-button" do %>
+              <%= image_tag("whatsapp.svg", width: 25) %> Compartilhar
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row d-flex mt-4">
+    <p style="color: #9797A4" class="text-center">Em breve entraremos em contato com você, fica ligado.</p>
+  </div>
+
+  <div class="row d-flex justify-content-end mb-5 me-1">
+    <%= link_to image_tag("add.svg", width: 40), set_location_path, class: "text-end" %>
+  </div>
+
+</div>

@@ -11,7 +11,6 @@ class LandsController < ApplicationController
     @carbon_ha = CreditPerHa.last
     @offer = Offer.new
     @land = Land.new
-    # @total = @carbon.year_1 * @carbon_price.year_1 / 12
     years = ("year_1".."year_30")
     monthly_averages = []
     years.each do |year|
@@ -27,16 +26,16 @@ class LandsController < ApplicationController
 
 
 
-  def update
-    raise
-  end
+  # def update
+  #   raise
+  # end
 
 
-  def new_offer
-  end
+  # def new_offer
+  # end
 
-  def index
-  end
+  # def index
+  # end
 
   def set_location
   end
