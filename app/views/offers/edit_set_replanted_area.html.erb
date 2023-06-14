@@ -23,7 +23,7 @@
             <span class="mes">/Mês</span>
           </p>
           <%= simple_form_for @offer, url: my_offers_path, method: :get, data: { replanted_size_target: "form" } do |f| %>
-            <%= f.input :replanted_area, label: false, as: :range, input_html:{ min:"0", max: @land.total_area, "data-replanted-size-target": "range", "data-action": 'input->replanted-size#displaySize' }%>
+            <%= f.input :replanted_area, label: false, wrapper: false, as: :range, input_html:{ min:"0", max: @land.total_area, "data-replanted-size-target": "range", "data-action": 'input->replanted-size#displaySize' }%>
           <div class="d-flex justify-content-between">
             <div>
               <p><span id="hectare" data-replanted-size-target="hectare"></span>Ha</p>
