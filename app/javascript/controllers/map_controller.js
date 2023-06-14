@@ -10,7 +10,8 @@ export default class extends Controller {
     latitude: Number,
     longitude: Number,
     offer: Number,
-    marker: Array
+    marker: Array,
+    newDrag: String
   }
 
   connect() {
@@ -39,12 +40,12 @@ export default class extends Controller {
       this.map.addControl(
         new mapboxgl.GeolocateControl({
         positionOptions: {
-        enableHighAccuracy: true
+          enableHighAccuracy: true
         },
-        // When active the map will receive updates to the device's location as it changes.
-        trackUserLocation: true,
-        // Draw an arrow next to the location dot to indicate which direction the device is heading.
-        showUserHeading: true
+          // When active the map will receive updates to the device's location as it changes.
+          trackUserLocation: true,
+          // Draw an arrow next to the location dot to indicate which direction the device is heading.
+          showUserHeading: true
         })
         );
   }
@@ -174,13 +175,21 @@ export default class extends Controller {
         })
         .setLngLat([event.result.center[0], event.result.center[1]])
         .addTo(this.map)
+        this.marker.on('dragend',function(e){
+          let lngLat = e.target.getLngLat();
+          console.log(lngLat['lat'])
+          console.log(lngLat['lng'])
+        })
         this.map.flyTo({
           center: [event.result.center[0], event.result.center[1]],
         // this animation is considered essential with respect to prefers-reduced-motion
           zoom: 10
         });
 
-  }
+
+
+
+      }
 
 
   #clearInputValue() {
