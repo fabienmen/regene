@@ -18,3 +18,6 @@ application.register("navbar", NavbarController)
 
 import ReplantedSizeController from "./replanted_size_controller"
 application.register("replanted-size", ReplantedSizeController)
+
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)
