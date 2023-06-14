@@ -160,7 +160,11 @@ export default class extends Controller {
       })
       });
     }
-        new mapboxgl.Marker()
+        new mapboxgl.Marker({
+
+            draggable: true
+
+        })
         .setLngLat([event.result.center[0], event.result.center[1]])
         .addTo(this.map)
         this.map.flyTo({
