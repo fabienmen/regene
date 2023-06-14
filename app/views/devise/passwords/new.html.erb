@@ -1,18 +1,25 @@
-<h2>Forgot your password?</h2>
+<%= render "shared/navbar_black" %>
+<div>
+  <div class="container navbar-margin-top justify-content-center w-100">
+  <h4 class="text-center py-3 bold-20 header-green">Esqueceu a sua senha?</h4>
+</div>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+<div class="container justify-content-center w-100 mt-3">
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  label: false,
+                  input_html: { autocomplete: "email", placeholder: "Email" } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+    <div class="form-actions w-100 d-flex justify-content-center">
+      <%= f.button :submit, "Enviar instruções", class: "btn btn-success w-100 py-4 mb-3" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>

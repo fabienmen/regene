@@ -1,4 +1,8 @@
-<h2>Change your password</h2>
+<%= render "shared/navbar_black" %>
+<div>
+  <div class="container navbar-margin-top justify-content-center w-100">
+  <h4 class="text-center py-3 bold-20 header-green">Troca de senha</h4>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>

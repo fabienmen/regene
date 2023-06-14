@@ -1,20 +1,28 @@
-<h2>Log in</h2>
+<%= render "shared/navbar_black" %>
+<div>
+  <div class="container navbar-margin-top justify-content-center w-100">
+  <h4 class="text-center py-3 bold-20 header-green">Login na Regene</h4>
+</div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class="container justify-content-center w-100 mt-3">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  label: false,
+                  input_html: { autocomplete: "email", placeholder: "Email"} %>
+      <%= f.input :password,
+                  required: false,
+                  label: false,
+                  input_html: { autocomplete: "current-password", placeholder: "Senha" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+    <div class="form-actions w-100 d-flex justify-content-center">
+      <%= f.button :submit, "Entrar", class: "btn btn-success w-100 py-4 mb-3" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
