@@ -71,22 +71,31 @@ export default class extends Controller {
           'source': biome.properties.Name, // reference the data source
           'layout': {},
           'paint': {
-            'fill-color': this.selectcolor(biome.properties.Name), // blue color fill
+            'fill-color': this.selectcolor(biome.properties.Name), // color fill
 
-            'fill-opacity': 0.5
+            'fill-opacity': 0.3
           }
         });
-        // Add a black outline around the polygon.
-        this.map.addLayer({
-          'id': 'outline' + biome.properties.Name,
-          'type': 'line',
-          'source': biome.properties.Name,
-          'layout': {},
-          'paint': {
-            'line-color': '#000',
-            'line-width': 1
-          }
-        });
+
+        this.map.on('click', biome.properties.Name, (e) => {
+          new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML('<strong>'+biome.properties.Name+'<strong>')
+          .addTo(this.map);
+          });
+
+          // Change the cursor to a pointer when
+          // the mouse is over the states layer.
+          this.map.on('mouseenter', biome.properties.Name, () => {
+          this.map.getCanvas().style.cursor = 'pointer';
+          });
+
+          // Change the cursor back to a pointer
+          // when it leaves the states layer.
+          this.map.on('mouseleave', biome.properties.Name, () => {
+          this.map.getCanvas().style.cursor = '';
+          });
+
       });
     });
   }
@@ -94,17 +103,17 @@ export default class extends Controller {
   selectcolor(name) {
     switch (name) {
       case 'Caatinga':
-        return "#ffffff";
+        return "#2196F3";
       case 'Cerrado':
-        return "#66cc00";
+        return "#333333";
       case 'Pantanal':
-        return "#a300cc";
+        return "#FF8080";
       case 'Pampa':
-        return "#0052cc";
+        return "#FFFFFF";
       case 'Amazônia':
-        return "#cc0000";
+        return "#22AA64";
       case 'Mata Atlântica':
-        return "#2929a3";
+        return "#29CF7A";
     }
   }
 
