@@ -40,6 +40,11 @@
                       autofocus: true,
                       label: false,
                       input_html: { autocomplete: "phone_number", placeholder: "Celular" }%>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      input_html: { autocomplete: "email", placeholder: "Email" }%>
           <%= f.input :tax_number,
                       required: true,
                       autofocus: true,
