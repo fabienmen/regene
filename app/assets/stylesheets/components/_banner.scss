@@ -13,7 +13,7 @@
   background-image: image-url("mata_tlantica.jpeg");
   background-size: cover;
   background-position: center;
-  height: 95vh;
+  height: calc(100vh - 54px)
 }
 
 .w90 {
