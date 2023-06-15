@@ -1,4 +1,4 @@
-// app/javascript/controllers/map_controller.js
+ // app/javascript/controllers/map_controller.js
 import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 import { end } from "@popperjs/core"
@@ -81,13 +81,8 @@ export default class extends Controller {
           });
 
         this.map.on('zoomend', biome.properties.Name, (e) => {
-            console.log('A zoom event occurred.');
             let url
-            // if (this.editModeValue) {
-            //   url = `/offers/${this.offerValue}/store_edit_biome`
-            // } else {
-              url = "/store_demo_biome"
-            // }
+            url = "/store_demo_biome"
             fetch(url, {
               method: "POST",
               headers: {
@@ -97,8 +92,6 @@ export default class extends Controller {
                 bio: biome.properties.Name
               })
             });
-
-            // const biomeName = biome.properties.Name
             });
           // Change the cursor to a pointer when
           // the mouse is over the states layer.
@@ -142,7 +135,6 @@ export default class extends Controller {
     let latitude = event.result.geometry.coordinates[0]
     let longitude = event.result.geometry.coordinates[1]
     let url
-    console.log(this.bioValue)
     if (this.editModeValue) {
       url = `/offers/${this.offerValue}/store_edit_value`
     } else {
@@ -182,6 +174,7 @@ export default class extends Controller {
         })
       })
     })
+
     this.map.flyTo({
       center: [event.result.center[0], event.result.center[1]],
         // this animation is considered essential with respect to prefers-reduced-motion
