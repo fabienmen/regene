@@ -44,7 +44,8 @@
               <p>de floresta <%= offer.land.biome %></p>
               <p>em <%= offer.land.address %> </p>
             </div>
-            <%= link_to "https://web.whatsapp.com/send?text=http://www.regene.app/offers/#{offer.id}", class: "offer-card-button" do %>
+            <%# https://web.whatsapp.com/send?text=http://www.regene.app/offers/#{offer.id} %>
+            <%= link_to "whatsapp://send?text=http://www.regene.app/offers/#{offer.id}", class: "offer-card-button" do %>
               <%= image_tag("whatsapp.svg", width: 25) %> Compartilhar
             <% end %>
           </div>
