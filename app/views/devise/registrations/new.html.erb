@@ -29,36 +29,36 @@
                       required: true,
                       autofocus: true,
                       label: false,
-                      input_html: { autocomplete: "first_name", placeholder: "Nome" }%>
+                      input_html: { autocomplete: "first_name", placeholder: "Nome", class: "form" }%>
           <%= f.input :last_name,
                       required: true,
                       autofocus: true,
                       label: false,
-                      input_html: { autocomplete: "last_name", placeholder: "Sobrenome" }%>
+                      input_html: { autocomplete: "last_name", placeholder: "Sobrenome", class: "form" }%>
           <%= f.input :phone_number,
                       required: true,
                       autofocus: true,
                       label: false,
-                      input_html: { autocomplete: "phone_number", placeholder: "Celular" }%>
+                      input_html: { autocomplete: "phone_number", placeholder: "Celular", class: "form" }%>
           <%= f.input :email,
                       required: true,
                       autofocus: true,
                       label: false,
-                      input_html: { autocomplete: "email", placeholder: "Email" }%>
+                      input_html: { autocomplete: "email", placeholder: "Email", class: "form" }%>
           <%= f.input :tax_number,
                       required: true,
                       autofocus: true,
                       label: false,
-                      input_html: { autocomplete: "tax_number", placeholder: "CPF" }%>
+                      input_html: { autocomplete: "tax_number", placeholder: "CPF", class: "form" }%>
           <%= f.input :password,
                       required: true,
                       label: false,
                       # hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password", placeholder: "Senha (min 6 caracteres)" } %>
+                      input_html: { autocomplete: "new-password", placeholder: "Senha (min 6 caracteres)", class: "form" } %>
           <%= f.input :password_confirmation,
                       required: true,
                       label: false,
-                      input_html: { autocomplete: "new-password", placeholder: "Confirmar senha" } %>
+                      input_html: { autocomplete: "new-password", placeholder: "Confirmar senha", class: "form" } %>
         </div>
 
         <div class="form-actions w-100 d-flex justify-content-center">
