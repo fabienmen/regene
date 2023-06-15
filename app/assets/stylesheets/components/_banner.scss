@@ -9,6 +9,13 @@
   height: 60vh;
 }
 
+.img-banner-set {
+  background-image: image-url("mata_tlantica.jpeg");
+  background-size: cover;
+  background-position: center;
+  height: calc(100dvh - 54px)
+}
+
 .w90 {
   width: 90%;
 }
