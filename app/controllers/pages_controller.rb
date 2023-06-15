@@ -10,7 +10,7 @@ class PagesController < ApplicationController
       latitude: session[:latitude],
       longitude: session[:longitude],
       address: session[:location],
-      biome: "Amazonica"
+      biome: session[:bio]
     )
     @land.save
 
