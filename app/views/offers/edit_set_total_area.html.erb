@@ -12,7 +12,7 @@
         </div>
         <div>
           <%= simple_form_for @land, url: edit_set_replanted_area_offer_path, method: :get do |f| %>
-            <%= f.input :total_area, placeholder: "ex: 500Ha", label: false %>
+            <%= f.input :total_area, placeholder: "ex: 500H", label: false %>
             <p class="banner-header mb-5">Em <strong><%= @land.address %></strong>, onde a floresta nativa é <strong>Amazônica</strong></p>
             <%= f.submit 'Validar', class: "btn btn-success w-100 py-4" %>
           <% end %>
