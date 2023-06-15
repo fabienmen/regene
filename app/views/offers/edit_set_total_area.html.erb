@@ -9,10 +9,10 @@
       <div class="w90 mx-auto py-3">
         <h1 class="text-center py-3 bold-20">Qual é o tamanho da sua terra, em hectares?</h1>
       </div>
-      <%= simple_form_for @land, url: edit_set_replanted_area_offer_path, method: :ge, html: { class: "d-flex flex-column flex-grow-1 justify-content-between" } do |f| %>
+      <%= simple_form_for @land, url: edit_set_replanted_area_offer_path, method: :get, html: { class: "d-flex flex-column flex-grow-1 justify-content-between" } do |f| %>
         <div class="w90 mx-auto py-3">
           <div>
-            <%= f.input :total_area, placeholder: "ex: 500H", label: false %>
+            <%= f.input :total_area, placeholder: "Exemplo: 50 hectares", label: false %>
             <p class="banner-header mb-5">Em <strong><%= @land.address %></strong>, onde a floresta nativa é <strong>Amazônica</strong></p>
           </div>
         </div>
