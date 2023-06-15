@@ -18,7 +18,7 @@ export default class extends Controller {
 
   displaySize() {
     this.hectareTarget.innerHTML = this.rangeTarget.value
-    this.reaisTarget.innerHTML = this.hectareTarget.innerHTML * this.totalValue
+    this.reaisTarget.innerHTML = (this.hectareTarget.innerHTML * this.totalValue).toLocaleString("pt-BR")
   }
 
   storeValue(event) {
