@@ -24,7 +24,6 @@ class LandsController < ApplicationController
     @size = session[:total_area]
   end
 
-
   def set_location
     session[:location] = nil
   end
@@ -40,7 +39,6 @@ class LandsController < ApplicationController
     session[:location] = params[:location]
     session[:latitude] = params[:latitude]
     session[:longitude] = params[:longitude]
-
   end
 
   def store_demo_biome
