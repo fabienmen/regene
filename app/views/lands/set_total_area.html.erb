@@ -13,8 +13,11 @@
         <div class="w90 mx-auto py-3">
           <div>
             <%= f.input :total_area, required: true, placeholder: "Ex: 100 hectares", label: false %>
-            <p class="banner-header mb-5">Em <strong><%= session[:location] %></strong>, onde a floresta nativa é <strong>Amazônica</strong></p>
-          </div>
+
+            <p class="banner-header mb-5">Em <strong><%= session[:location] %></strong>, onde a floresta nativa é <strong><%=session[:bio]%></strong></p>
+            <%= f.submit 'Validar', class: "btn btn-success w-100 py-4" %>
+          <% end %>
+
         </div>
         <div class="w90 mx-auto py-3 mb-3">
           <%= f.submit 'Validar', class: "btn btn-success w-100 py-4" %>

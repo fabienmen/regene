@@ -2,7 +2,7 @@ class LandsController < ApplicationController
   before_action :set_land, only: [ :update, :store_edit_value ]
 
   skip_before_action :verify_authenticity_token
-  skip_before_action :authenticate_user!, only: [:set_replanted_area, :set_total_area, :set_location, :store_demo_value, :store_replanted]
+  skip_before_action :authenticate_user!, only: [:set_replanted_area, :set_total_area, :set_location, :store_demo_value, :store_replanted, :store_demo_biome]
 
 
   def set_replanted_area
@@ -40,6 +40,11 @@ class LandsController < ApplicationController
     session[:location] = params[:location]
     session[:latitude] = params[:latitude]
     session[:longitude] = params[:longitude]
+
+  end
+
+  def store_demo_biome
+    session[:bio] = params[:bio]
   end
 
   def store_replanted

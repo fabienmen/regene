@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [ :edit_set_location, :edit_set_total_area, :store_edit_value, :edit_set_replanted_area, :edit_store_replanted, :destroy, :show ]
+  before_action :set_offer, only: [ :edit_set_location, :edit_set_total_area, :store_edit_value, :edit_set_replanted_area, :edit_store_replanted, :destroy, :show, :store_edit_biome ]
 
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!, only: [:show]
@@ -36,6 +36,11 @@ class OffersController < ApplicationController
     @land.longitude = params[:longitude]
     @land.address = params[:location]
     @land.save
+  end
+
+  def store_edit_biome
+    @land = @offer.land
+    @land.biome = params[:bio]
   end
 
   def edit_set_total_area

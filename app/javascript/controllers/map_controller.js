@@ -11,9 +11,9 @@ export default class extends Controller {
     longitude: Number,
     offer: Number,
     marker: Array,
-    newDrag: String
+    newDrag: String,
+    bio: String
   }
-
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
     this.map = new mapboxgl.Map({
@@ -23,20 +23,16 @@ export default class extends Controller {
       center: this.mapCenter(),
       zoom: this.mapzoom()
     })
-
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
       types: "country,region,place,postcode,locality,neighborhood,address",
     })
-
     this.geocoder.on("result", event => this.#setInputValue(event))
     this.geocoder.addTo(this.element)
-
     //new
     fetch('brazil.json')
       .then(response => response.json())
       .then(data => this.layersonmap(data));
-
       this.map.addControl(
         new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -49,7 +45,6 @@ export default class extends Controller {
         })
         );
   }
-
   // biome
   layersonmap(biomes) {
     biomes.features.forEach(biome => {
@@ -67,7 +62,6 @@ export default class extends Controller {
             }
           }
         });
-
         // Add a new layer to visualize the polygon.
         this.map.addLayer({
           'id': biome.properties.Name,
@@ -76,35 +70,49 @@ export default class extends Controller {
           'layout': {},
           'paint': {
             'fill-color': this.selectcolor(biome.properties.Name), // color fill
-
             'fill-opacity': 0.3
           }
         });
-
         this.map.on('click', biome.properties.Name, (e) => {
-          console.log(biome.properties.Name)
-           new mapboxgl.Popup()
-           .setLngLat(e.lngLat)
-           .setHTML('<strong>'+biome.properties.Name+'<strong>')
-           .addTo(this.map);
+          new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML('<strong>'+biome.properties.Name+'<strong>')
+          .addTo(this.map);
           });
 
+        this.map.on('zoomend', biome.properties.Name, (e) => {
+            console.log('A zoom event occurred.');
+            let url
+            // if (this.editModeValue) {
+            //   url = `/offers/${this.offerValue}/store_edit_biome`
+            // } else {
+              url = "/store_demo_biome"
+            // }
+            fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                bio: biome.properties.Name
+              })
+            });
+
+            // const biomeName = biome.properties.Name
+            });
           // Change the cursor to a pointer when
           // the mouse is over the states layer.
           this.map.on('mouseenter', biome.properties.Name, () => {
           this.map.getCanvas().style.cursor = 'pointer';
           });
-
           // Change the cursor back to a pointer
           // when it leaves the states layer.
           this.map.on('mouseleave', biome.properties.Name, () => {
           this.map.getCanvas().style.cursor = '';
           });
-
       });
     });
   }
-
   selectcolor(name) {
     switch (name) {
       case 'Caatinga':
@@ -121,31 +129,25 @@ export default class extends Controller {
         return "#29CF7A";
     }
   }
-
   mapzoom() {
     const zoom = 2;
     return this.editModeValue ? 5 : zoom;
   }
-
   mapCenter() {
     const defaultCenter = [ -53.198048418153014, -8.240508731394382];
     return this.editModeValue ? [ this.longitudeValue, this.latitudeValue ] : defaultCenter;
   }
-
   #setInputValue(event) {
-    // console.log(biome.properties.Name)
-    // let bla = this.map.getLayer();
-    console.log(this.map.getCanvas())
     let location =  event.result.text
     let latitude = event.result.geometry.coordinates[0]
     let longitude = event.result.geometry.coordinates[1]
     let url
+    console.log(this.bioValue)
     if (this.editModeValue) {
       url = `/offers/${this.offerValue}/store_edit_value`
     } else {
       url = "/store_demo_value"
     }
-
     fetch(url, {
       method: "POST",
       headers: {
@@ -158,37 +160,32 @@ export default class extends Controller {
       })
     });
 
-   
-        if(this.marker != undefined){
-          this.marker.remove()
-        }
-        this.marker = new mapboxgl.Marker({
-
-            draggable: true
-
+    if(this.marker != undefined){
+      this.marker.remove()
+    }
+    this.marker = new mapboxgl.Marker({
+      draggable: true
+    })
+    .setLngLat([event.result.center[0], event.result.center[1]])
+    .addTo(this.map)
+    this.marker.on('dragend',function(e){
+    let lngLat = e.target.getLngLat();
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          location: location,
+          latitude: lngLat['lat'],
+          longitude: lngLat['lng']
         })
-        .setLngLat([event.result.center[0], event.result.center[1]])
-        .addTo(this.map)
-        this.marker.on('dragend',function(e){
-          let lngLat = e.target.getLngLat();
-          console.log(lngLat['lat'])
-          console.log(lngLat['lng'])
-          fetch(url, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              location: location,
-              latitude: lngLat['lat'],
-              longitude: lngLat['lng']
-            })
-          })
-        })
-        this.map.flyTo({
-          center: [event.result.center[0], event.result.center[1]],
+      })
+    })
+    this.map.flyTo({
+      center: [event.result.center[0], event.result.center[1]],
         // this animation is considered essential with respect to prefers-reduced-motion
-          zoom: 10
-        });
+      zoom: 10
+    });
   }
 }
