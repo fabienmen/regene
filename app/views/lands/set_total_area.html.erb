@@ -12,8 +12,8 @@
       <%= simple_form_for @land, url: set_replanted_area_path, method: :get, html: { class: "d-flex flex-column flex-grow-1 justify-content-between" } do |f| %>
         <div class="w90 mx-auto py-3">
           <div>
-              <%= f.input :total_area, required: true, placeholder: "Ex: 100 hectares", label: false %>
-              <p class="banner-header mb-5">Em <strong><%= session[:location] %></strong>, onde a floresta nativa é <strong>Amazônica</strong></p>
+            <%= f.input :total_area, required: true, placeholder: "Ex: 100 hectares", label: false %>
+            <p class="banner-header mb-5">Em <strong><%= session[:location] %></strong>, onde a floresta nativa é <strong>Amazônica</strong></p>
           </div>
         </div>
         <div class="w90 mx-auto py-3 mb-3">
