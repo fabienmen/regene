@@ -6,6 +6,10 @@ class LandsController < ApplicationController
 
 
   def set_replanted_area
+    puts params["land"]["total_area"]
+    if (params["land"]["total_area"] == "")
+      redirect_to set_total_area_path
+    end
     @carbon = CarbonCreditPrice.last
     @carbon_ha = CreditPerHa.last
     @offer = Offer.new

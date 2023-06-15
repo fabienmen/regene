@@ -82,10 +82,11 @@ export default class extends Controller {
         });
 
         this.map.on('click', biome.properties.Name, (e) => {
-          new mapboxgl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML('<strong>'+biome.properties.Name+'<strong>')
-          .addTo(this.map);
+          console.log(biome.properties.Name)
+           new mapboxgl.Popup()
+           .setLngLat(e.lngLat)
+           .setHTML('<strong>'+biome.properties.Name+'<strong>')
+           .addTo(this.map);
           });
 
           // Change the cursor to a pointer when
@@ -132,6 +133,9 @@ export default class extends Controller {
   }
 
   #setInputValue(event) {
+    // console.log(biome.properties.Name)
+    // let bla = this.map.getLayer();
+    console.log(this.map.getCanvas())
     let location =  event.result.text
     let latitude = event.result.geometry.coordinates[0]
     let longitude = event.result.geometry.coordinates[1]
@@ -154,39 +158,7 @@ export default class extends Controller {
       })
     });
 
-    // if (this.editModeValue) {
-    //   let location =  event.result.text
-    //   let latitude = event.result.geometry.coordinates[0]
-    //   let longitude = event.result.geometry.coordinates[1]
-    //   fetch(`/offers/${this.offerValue}/store_edit_value`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //       location: location,
-    //       latitude: latitude,
-    //       longitude: longitude
-    //     })
-    //   });
-
-    // } else {
-    //   let location = event.result.text
-    //   let latitude = event.result.geometry.coordinates[0]
-    //   let longitude = event.result.geometry.coordinates[1]
-    //   fetch("/store_demo_value", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //       location: location,
-    //       latitude: latitude,
-    //       longitude: longitude
-    //     })
-    //   });
-    // }
-
+   
         if(this.marker != undefined){
           this.marker.remove()
         }
