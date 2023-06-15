@@ -29,7 +29,7 @@
               <% end %>
               <% total = monthly_averages.sum(0.0) / monthly_averages.size %>
               <% everage = total * offer.replanted_area %>
-              <h2><strong>R$ <%= everage %></strong></h2>
+              <h2><strong>R$ <%= everage.ceil.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1.').reverse %></strong></h2>
               <p>/ Mês</p>
             </div>
           </div>
@@ -40,7 +40,7 @@
             </div>
             <div class="offer-card-text">
               <p>Para <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></p>
-              <p>Replantando <%= offer.replanted_area %> hectares </p>
+              <p>Replantando <%= offer.replanted_area.ceil.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1.').reverse %> hectares </p>
               <p>de floresta <%= offer.land.biome %></p>
               <p>em <%= offer.land.address %> </p>
             </div>
@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
   <% end %>
 
   <div class="row d-flex mt-4">
