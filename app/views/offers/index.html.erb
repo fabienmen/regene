@@ -44,14 +44,24 @@
               <p>de floresta <%= offer.land.biome %></p>
               <p>em <%= offer.land.address %> </p>
             </div>
+
             <%# https://web.whatsapp.com/send?text=http://www.regene.app/offers/#{offer.id} %>
-            <%= link_to "whatsapp://send?text=http://www.regene.app/offers/#{offer.id}", class: "offer-card-button" do %>
+            <%# whatsapp://send?text=http://www.regene.app/offers/#{offer.id} %>
+            <%# https://wa.me/whatsappphonenumber/?text= %>
+            <%# https://api.whatsapp.com/send?text= %>
+            <%= link_to "https://api.whatsapp.com/send?text=https://www.regene.app/offers/#{offer.id}", class: "offer-card-button" do %>
               <%= image_tag("whatsapp.svg", width: 25) %> Compartilhar
             <% end %>
           </div>
         </div>
       </div>
     </div>
+
+
+
+
+
+    
   <% end %>
 
   <div class="row d-flex mt-4">
