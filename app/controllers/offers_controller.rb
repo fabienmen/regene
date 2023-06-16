@@ -38,10 +38,10 @@ class OffersController < ApplicationController
     @land.save
   end
 
-  def store_edit_biome
-    @land = @offer.land
-    @land.biome = params[:bio]
-  end
+  # def store_edit_biome
+  #   @land = @offer.land
+  #   @land.biome = params[:bio]
+  # end
 
   def edit_set_total_area
     @land = @offer.land
