@@ -1,5 +1,5 @@
 meta_name: "Regene App"
 meta_title: "Refloreste a sua land e faz dinheiro"
 meta_description: "Salva o mundo!"
-meta_image: <%= asset_path("mata_tlantica.jpg") %> # should exist in `app/assets/images/`
+meta_image: "mata_tlantica.jpg" # should exist in `app/assets/images/`
 # twitter_account: "@your_twitter_account"
