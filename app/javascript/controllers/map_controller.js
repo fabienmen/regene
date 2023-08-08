@@ -15,7 +15,7 @@ export default class extends Controller {
     bio: String
   }
   connect() {
-    mapboxgl.accessToken = this.apiKeyValue
+    mapboxgl.accessToken = "pk.eyJ1IjoiYWNjaWFpb2xpIiwiYSI6ImNsaHQyNjJtNjA3NTIzaGw5NXM4aThqN2IifQ.L4kzoVJfWsdX493PYHLIcg"
     this.map = new mapboxgl.Map({
       container: this.element,
       projection: 'globe',
